@@ -2,8 +2,8 @@
  * @O(n)
  * @param searchArray The search space where the target might be found
  * @param target The element to be found 
- * @returns returns an object with index(i) of the found element and the found statement or (i:-1) if target was not found 
- *  or undefined is the searchArray is empty
+ * @returns undefined if the list is empty. Returns an object with the index of the found target (or -1 if target not found) 
+ *      and the found statement 
  */
 function linearSearch(searchArray: number[], target: number) {
     if(searchArray.length === 0) return

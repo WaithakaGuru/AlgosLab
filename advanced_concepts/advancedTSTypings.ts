@@ -239,4 +239,4 @@ function doThat (obj:B): B {
 }
 
 // typing and array of objects of type B
-const arr: B[] = [{d: 45}, {g: 67}]
+const array: B[] = [{d: 45}, {g: 67}]

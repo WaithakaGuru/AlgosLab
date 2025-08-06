@@ -1,0 +1,4 @@
+
+function depthFirstSearch(tree: BSTree) {
+
+}

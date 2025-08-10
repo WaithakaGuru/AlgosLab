@@ -29,7 +29,7 @@ class BinaryNode<T> {
  * @classdesc - a class describing the form of a BinarySearchTree and its methods 
  */
 class BinarySearchTree<T>{
-    private root: BinaryNode<T> | null
+    root: BinaryNode<T> | null
     constructor() {
         this.root = null
     }

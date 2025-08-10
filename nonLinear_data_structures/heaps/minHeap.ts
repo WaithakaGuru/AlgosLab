@@ -7,9 +7,14 @@ import { HeapMethods } from "./BaseClasses";
  */
 class minHeap extends HeapMethods{
     add(val: number): void {
-        
+        this.heap.push(val)
+        this.siftUp(this.heap[this.len()])
     }
     heapify(arr: number[]): number[] | void{
+        for (const num of arr) {
+            this.heap.push(num)
+            this.siftUp(this.len())
+        }
     }
 
     siftUp(i: number): void {
@@ -26,7 +31,7 @@ class minHeap extends HeapMethods{
     siftDown(i: number): void {
         const min = (i: number, j: number) => this.heap[i] <= this.heap[j] ? i : j;
         let left = (i *2) + 1, right = (i*2)+ 2, less = min(left, right)
-        if(left >= this.len() || right >= this.len()) return;
+        if(left > this.len() || right > this.len()) return;
         while(this.heap[i] > this.heap[less]){
             [this.heap[i], this.heap[less]] = [this.heap[less], this.heap[i]];
             i = less;
@@ -35,4 +40,10 @@ class minHeap extends HeapMethods{
         }
     }
 
+    pluck(): number | undefined {
+      [this.heap[0], this.heap[this.len()]] = [this.heap[this.len()], this.heap[0]];
+      const min = this.heap.pop(), modified = this.heap;
+      this.heap = [], this.heapify(modified);
+      return min;
+    }
 }

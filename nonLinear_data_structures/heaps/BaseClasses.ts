@@ -71,10 +71,10 @@ export abstract class HeapMethods extends HeapNode{
     heapify(arr: number[]): number[] | void{ return}
     
     /**
-     * Returns a count of the nodes in the heap
-     * @returns the number of nodes in the heap
+     * Returns a number that is one less than the count of the nodes in the heap
+     * @returns the zeroBased index length of nodes in the heap
      */
     len(): number {
-        return this.heap.length;
+        return this.heap.length === 0 ? 0 : this.heap.length -1;
     }
 }

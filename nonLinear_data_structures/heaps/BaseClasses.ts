@@ -15,7 +15,7 @@ export abstract class HeapNode{
 /**
  * @abstract class that contains all the declarations of the methods and properties of a max or min heap and their JSDoc comments documentation
  */
-export abstract class HeapMethods extends HeapNode{    
+export abstract class HeapMethods{    
     heap: number[] =[]
     /**
      * Adds a value to the heap while maintaining the heap property
@@ -57,7 +57,7 @@ export abstract class HeapMethods extends HeapNode{
     siftDown(idx: number): void{}
     
     /**
-     * Updates the value of a heap node while maintaining the heap property
+     * Updates the value of a heap node at a given index in the heap while maintaining the heap property
      * @param idx the index of the heap value to be updated
      * @param val the new value of to be set 
      */
@@ -66,7 +66,7 @@ export abstract class HeapMethods extends HeapNode{
     /**
      * Takes in and array and converts it to a heap
      * @param arr an array of values to be converted to a heap 
-     * @returns the new heap or undefined if the @param arr is empty
+     * @returns the new heap or undefined if the arr is empty
      */
     heapify(arr: number[]): number[] | void{ return}
     

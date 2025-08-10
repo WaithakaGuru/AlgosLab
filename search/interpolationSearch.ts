@@ -8,8 +8,8 @@
  */
 function interpolationSearch(searchArray: number[], target: number ): number | undefined {
     if(searchArray.length === 0) return 
-    let low = 0, high: number = searchArray.length - 1, probe = 0;
-    const SearchedIndices = new Set<number>()
+    let low = 0, high: number = searchArray.length - 1, probe = null;
+    const SearchedIndices = new Set<number | null> ()
     while(!SearchedIndices.has(probe)){
         SearchedIndices.add(probe)
         probe = Math.round((low + (high-low) * ((target - searchArray[low]) / (searchArray[high] - searchArray[low]))));
@@ -19,6 +19,3 @@ function interpolationSearch(searchArray: number[], target: number ): number | u
     }
     return -1;
 }
-
-const arr = [1,2,3,4,8,12,14,16,18,23,26,35,67,89,90,112];
-console.log(interpolationSearch(arr, 67));

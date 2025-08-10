@@ -13,11 +13,11 @@ export default class MinHeap extends HeapMethods{
 
     heapify(arr: number[]): number[] | void{
         this.heap = [...arr];
-        for (let i = Math.floor(this.len() / 2); i >= 0; i--) 
-         this.siftDown(i)
+        for (let i =  Math.floor(this.len()/2); i>=0; i--) 
+         this.siftDown(i);
     }
 
-    siftUp(i: number): void {     
+    protected siftUp(i: number): void {     
         let parent = Math.floor((i-1)/2);
         while(i > 0 && this.heap[i] < this.heap[parent]){
             [this.heap[i], this.heap[parent]] = [this.heap[parent], this.heap[i]]
@@ -26,22 +26,27 @@ export default class MinHeap extends HeapMethods{
         } 
     }
 
-    siftDown(i: number): void {
-        const min = (i: number, j: number) => this.heap[i] <= this.heap[j] ? i : j;
-        let left = 2 * i + 1, right = 2 * i + 2, less = min(left, right)
-        if(left > this.len() || right > this.len()) return;
-        while(this.heap[i] > this.heap[less] && left < this.len() && right < this.len()){
-            [this.heap[i], this.heap[less]] = [this.heap[less], this.heap[i]];
-            i = less;
-            left =  (i *2) + 1, right = (i*2)+ 2;
-            less = min(left, right); 
+    protected siftDown(i: number): void {
+        const min = (k: number, j: number) => this.heap[k] <= this.heap[j] ? k : j;
+
+        let left = 2 * i + 1, right = 2 * i + 2;
+        
+        while(true){
+            if(left > this.len()) return;
+            let less = (right > this.len()) ? left : min(left, right)
+            if(this.heap[i] > this.heap[less]){
+                [this.heap[i], this.heap[less]] = [this.heap[less], this.heap[i]];
+                i = less;
+                left = 2 * i + 1;
+                right = 2 * i + 2;
+            }else break;
         }
     }
 
     pluck(): number | undefined {
         [this.heap[0], this.heap[this.len()]] = [this.heap[this.len()], this.heap[0]];
-        const min = this.heap.pop(), modified = this.heap;
-        this.siftDown(0)
+        const min = this.heap.pop();
+        this.siftDown(0);
         return min;
     }
 
@@ -56,3 +61,9 @@ export default class MinHeap extends HeapMethods{
         else this.siftUp(idx)
     }
 }
+const heap2 = new MinHeap();
+heap2.heapify([4,3,2,1]);
+console.log(heap2.heap);
+// console.log(heap2.peek());
+heap2.pluck()
+console.log(heap2.heap)

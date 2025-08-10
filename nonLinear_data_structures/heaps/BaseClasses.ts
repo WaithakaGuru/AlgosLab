@@ -46,7 +46,7 @@ export abstract class HeapMethods{
      * @param idx  the index of the heapNode to be siftedUp
      * @returns void
      */
-    siftUp(idx: number): void{}
+    protected siftUp(idx: number): void{}
 
     /**
      * Compares and exanges a parentValue with its child if the value is less (for maxHeap) or larger(for minHeap) than the parent
@@ -54,7 +54,7 @@ export abstract class HeapMethods{
      * @param idx the index of the heapNode to be sifted Down
      * @returns void
      */
-    siftDown(idx: number): void{}
+    protected siftDown(idx: number): void{}
     
     /**
      * Updates the value of a heap node at a given index in the heap while maintaining the heap property

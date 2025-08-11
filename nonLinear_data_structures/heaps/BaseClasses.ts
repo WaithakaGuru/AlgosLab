@@ -3,10 +3,13 @@ import { HeapMethodsDeclarations } from "./heapDeclarations";
 type HeapType = "MAX" | "MIN";
 
 const Comparers = {
-    MAX:{ option:(i: number, j: number) => i>j, 
-        optima: (k: number, l: number, heap: number[])=> (heap[k] >= heap[l])? k : l},
-    MIN: {option: (i: number, j: number) => i<j, 
-        optima: (k: number, l: number, heap: number[]) => (heap[k] <= heap[l]) ? k : l
+    MAX:{ 
+        option: (i: number, j: number) => i>j,
+        optima: (k: number, l: number, heap: number[]) => (heap[k] >= heap[l])? k : l
+    },
+    MIN: {
+        option: (i: number, j: number) => i<j,
+        optima: (k: number, l: number, heap: number[]) => (heap[k] <= heap[l])? k : l
     }
 }
 

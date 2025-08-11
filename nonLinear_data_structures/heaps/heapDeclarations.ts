@@ -1,7 +1,12 @@
  /**
  * @abstract class that contains all the declarations of the methods and properties of a max or min heap and their JSDoc comments documentation
  */
-export abstract class HeapMethodsDeclarations{    
+export abstract class HeapMethodsDeclarations{   
+  /**
+   * A container for all the heapNodes that obey the heap property.
+   */
+  heap: number[]  = []
+
     /**
      * Adds a value to the heap while maintaining the heap property
      * @param val the value to be added to the heap 
@@ -57,5 +62,10 @@ export abstract class HeapMethodsDeclarations{
      * Returns a number that is one less than the count of the nodes in the heap
      * @returns the zeroBased index length of nodes in the heap
      */
-    len(): number{return 0}
+    protected len(): number{return 0}
+
+    /**
+     * The number of items in the heap
+     */
+    readonly size: number = 0;
 }

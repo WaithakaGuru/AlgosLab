@@ -32,6 +32,9 @@ console.table(heap2.heap);
 
 console.log(heap2.peek());
 heap2.pluck()
+const count = heap2.size
 console.table(heap2.heap)
+console.log(count);
 // console.clear()
 
+heap2

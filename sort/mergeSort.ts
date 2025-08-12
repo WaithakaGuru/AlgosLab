@@ -27,7 +27,7 @@ export default function mergeSort(list: number[]): number[] | void{
 }
 
 /**
- * A helper function to help sort the subarrays and marge them back into full arrays
+ * A helper function to help sort the subarrays and merge them back into full arrays
  * @param leftArray The left array to be sorted and merged
  * @param rightArray The right array to be sorted and merged
  * @param fullArray The full array from which the left and right arrays were splited

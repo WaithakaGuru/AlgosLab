@@ -24,6 +24,7 @@ console.timeEnd("Selection sort: Almost sorted List");
 console.time("Selection sort: Normal List");
 console.table(selectionSort(test3));
 console.timeEnd("Selection sort: Normal List");
+console.log();
 
 console.log("\t--INSERTION SORT--\n");
 console.time("Insertion sort: sorted List");
@@ -41,6 +42,7 @@ console.timeEnd("Insertion sort: Almost sorted List");
 console.time("Insertion sort: Normal List");
 console.table(insertionSort(test3));
 console.timeEnd("Insertion sort: Normal List");
+console.log();
 
 console.log("\t--HEAP SORT--\n");
 console.time("Heap sort: sorted List");

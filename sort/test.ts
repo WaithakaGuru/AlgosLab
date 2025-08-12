@@ -1,3 +1,4 @@
+import heapSort from "./heapSort";
 import insertionSort from "./insertionSort";
 import selectionSort from "./selectionSort";
 
@@ -39,3 +40,20 @@ console.timeEnd("Insertion sort: Almost sorted List");
 console.time("Insertion sort: Normal List");
 console.table(insertionSort(test3));
 console.timeEnd("Insertion sort: Normal List");
+
+console.log("\t--HEAP SORT--\n");
+console.time("Heap sort: sorted List");
+console.table(heapSort(test));
+console.timeEnd("Heap sort: sorted List");
+
+console.time("Heap sort: ReverseSorted List");
+console.table(heapSort(test1));
+console.timeEnd("Heap sort: ReverseSorted List");
+
+console.time("Heap sort: Almost sorted List");
+console.table(heapSort(test2));
+console.timeEnd("Heap sort: Almost sorted List");
+
+console.time("Heap sort: Normal List");
+console.table(heapSort(test3));
+console.timeEnd("Heap sort: Normal List");

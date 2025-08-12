@@ -4,9 +4,8 @@ import minHeap from "./minHeap";
 const heap1 = new minHeap ();
 heap1.heapify([4,3,2,1]);
 console.table(heap1.heap);
-heap1.pluck();
 // heap1.pluck();
-// heap1.pluck();
+// heap1.pluck()
 // console.log(heap1.peek());
 // heap1.add(22);
 // heap1.update(0, 1)

@@ -16,7 +16,6 @@ const Comparers = {
 export abstract class Heap extends HeapMethodsDeclarations {
     private type : HeapType
     size: number;
-
     constructor(heapType : HeapType) {
         super()
         this.type = heapType
@@ -36,7 +35,7 @@ export abstract class Heap extends HeapMethodsDeclarations {
 
     
     pluck(): number | undefined {
-        if(this.size === 0)  return
+        if(this.heap.length===0)  return
         [this.heap[0], this.heap[this.len()]] = [this.heap[this.len()], this.heap[0]];
         const min = this.heap.pop();
         this.siftDown(0);
@@ -70,7 +69,7 @@ export abstract class Heap extends HeapMethodsDeclarations {
             i = parent;
             parent = Math.floor((i-1)/2)
         }
-        this.size = this.heap.length - 1; 
+        this.size = this.heap.length; 
     }
     
     protected siftDown(i: number): void {

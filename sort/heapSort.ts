@@ -11,8 +11,5 @@ export default function heapSort(list: number[]): number[] {
     heap.heapify(list)
     const result: number[] = [];
     for(const i of list) result.push(heap.pluck()!)
-    result[result.length-1] = heap.heap[heap.size]
     return result 
 }
-
-console.log(heapSort([23,45,12,3,67,54,89,0,34,22,33]));

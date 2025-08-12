@@ -12,8 +12,9 @@ export default function bucketSort(list: number[]): number[]{
         else if(item > largest) largest = item
     }
     const range = Math.floor((largest - smallest) / bucketCount);
-    let buckets: Array<Array<number>> = [[],[],[],[],[]]
     if(list.length < bucketCount) return quickSort(list)
+    let buckets: Array<Array<number>> = []
+    for(let i = 0; i<bucketCount; i++) buckets.push([]);
     for(let i = 0; i<list.length; i++){
         if(list[i] <= range) buckets[0].push(list[i])
         else if(list[i] <= range*2) buckets[1].push(list[i])

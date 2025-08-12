@@ -36,5 +36,3 @@ const count = heap2.size
 console.table(heap2.heap)
 console.log(count);
 // console.clear()
-
-heap2

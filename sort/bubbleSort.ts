@@ -9,9 +9,8 @@ export default function bubbleSort(list: number[]): number[]{
     do{
         swaps = 0;
         for(let i=0; i<list.length; i++){
-            let  j = i,  k = j+1;
-            if(list[j] > list[k]) {
-                [list[j], list[k]] = [list[k], list[j]];
+            if(list[i] > list[i+1]) {
+                [list[i], list[i+1]] = [list[i+1], list[i]];
                 swaps ++
             }
         }

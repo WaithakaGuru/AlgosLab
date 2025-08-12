@@ -1,3 +1,4 @@
+import bucketSort from "./bucketSort";
 import heapSort from "./heapSort";
 import insertionSort from "./insertionSort";
 import mergeSort from "./mergeSort";
@@ -78,3 +79,21 @@ console.timeEnd("Merge sort: Almost sorted List");
 console.time("Merge sort: Normal List");
 console.table(mergeSort(test3));
 console.timeEnd("Merge sort: Normal List");
+console.log();
+
+console.log("\t--BUCKET SORT--\n");
+console.time("Bucket sort: sorted List");
+console.table(bucketSort(test));
+console.timeEnd("Bucket sort: sorted List");
+
+console.time("Bucket sort: ReverseSorted List");
+console.table(bucketSort(test1));
+console.timeEnd("Bucket sort: ReverseSorted List");
+
+console.time("Bucket sort: Almost sorted List");
+console.table(bucketSort(test2));
+console.timeEnd("Bucket sort: Almost sorted List");
+
+console.time("Bucket sort: Normal List");
+console.table(bucketSort(test3));
+console.timeEnd("Bucket sort: Normal List");

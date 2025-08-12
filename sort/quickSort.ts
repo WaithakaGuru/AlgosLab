@@ -2,7 +2,7 @@
  * Sorting algorithm that works by diving list into two where all elements below pivot are less and above are larger that the pivot
  * @param list - the list of items to be sorted
  * @returns the sorted list
- * Recursive approach with a helper function 
+ * @implements A Recursive approach with a helper function 
  */
 export default function quickSort(list: number[], start = 0, end = list.length-1) : number[]{
     if(start < end){

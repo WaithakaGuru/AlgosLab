@@ -40,10 +40,7 @@ function merge(leftArray: number[], rightArray: number[], fullArray: number[]): 
             if(leftArray[leftPointer] <= rightArray[rightPointer]) fullArray[i] = leftArray[leftPointer++];
             else if(rightArray[rightPointer] < leftArray[leftPointer]) fullArray[i] = rightArray[rightPointer++];
         }
-        else{
-            if(rightPointer < rightArray.length) fullArray[i] = rightArray[rightPointer++];
-            else fullArray[i] = leftArray[leftPointer++]
-        }
+        else fullArray[i] = rightPointer < rightArray.length ? rightArray[rightPointer++ ] : leftArray[leftPointer++]
     }
     return fullArray
 }

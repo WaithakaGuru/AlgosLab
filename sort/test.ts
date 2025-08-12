@@ -1,5 +1,6 @@
 import heapSort from "./heapSort";
 import insertionSort from "./insertionSort";
+import mergeSort from "./mergeSort";
 import selectionSort from "./selectionSort";
 
 const test = [1,2,3,4]
@@ -57,3 +58,21 @@ console.timeEnd("Heap sort: Almost sorted List");
 console.time("Heap sort: Normal List");
 console.table(heapSort(test3));
 console.timeEnd("Heap sort: Normal List");
+console.log();
+
+console.log("\t--MERGE SORT--\n");
+console.time("Merge sort: sorted List");
+console.table(mergeSort(test));
+console.timeEnd("Merge sort: sorted List");
+
+console.time("Merge sort: ReverseSorted List");
+console.table(mergeSort(test1));
+console.timeEnd("Merge sort: ReverseSorted List");
+
+console.time("Merge sort: Almost sorted List");
+console.table(mergeSort(test2));
+console.timeEnd("Merge sort: Almost sorted List");
+
+console.time("Merge sort: Normal List");
+console.table(mergeSort(test3));
+console.timeEnd("Merge sort: Normal List");

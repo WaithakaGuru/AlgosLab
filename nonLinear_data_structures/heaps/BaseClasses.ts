@@ -1,4 +1,4 @@
-import { HeapMethodsDeclarations } from "./heapDeclarations";
+import HeapMethodsDeclarations from "./heapDeclarations";
 
 type HeapType = "MAX" | "MIN";
 

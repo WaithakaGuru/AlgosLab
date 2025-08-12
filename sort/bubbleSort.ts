@@ -2,6 +2,7 @@
  * Bubbles each element repeatedly by comapring it to the next element until the List is sorted 
  * @param list the list of items to be sorted
  * @implements the two pointer method
+ * @returns the sorted list
  */
 export default function bubbleSort(list: number[]): number[]{
     let swaps: number

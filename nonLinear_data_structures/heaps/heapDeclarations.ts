@@ -1,7 +1,7 @@
  /**
  * @abstract class that contains all the declarations of the methods and properties of a max or min heap and their JSDoc comments documentation
  */
-export abstract class HeapMethodsDeclarations{   
+export default abstract class HeapMethodsDeclarations{   
   /**
    * A container for all the heapNodes that obey the heap property.
    */

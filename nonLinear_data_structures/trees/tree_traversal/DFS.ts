@@ -1,4 +1,4 @@
-import { BinaryNode, BinarySearchTree } from "../BinarySearchTree";
+import {BinarySearchTree } from "../BinarySearchTree";
 
 /**
  * @classdesc A collection of all the variations of DepthFirstSearch as methods

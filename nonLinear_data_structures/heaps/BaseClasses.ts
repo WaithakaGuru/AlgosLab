@@ -44,14 +44,14 @@ export abstract class Heap extends HeapMethodsDeclarations {
     
     update(idx: number, val: number) {
         const comp = Comparers[this.type].option;
+        const parent = Math.floor((idx-1) / 2);
         if(val === this.heap[idx]) return
         else if(this.len() === 0) this.heap.push(val);
-        else if(idx === 0 && comp(val, this.heap[0])) this.heap[0] = val;
-        else if(idx === 0) {
+        else{             
             this.heap[idx] = val;
-            this.siftDown(idx)
+            if (comp(val, this.heap[parent])) this.siftUp(idx)
+            else this.siftDown(idx)
         }
-        else this.siftUp(idx)
     }
 
     protected len () : number {

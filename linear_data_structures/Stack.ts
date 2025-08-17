@@ -40,9 +40,3 @@ export default class Stack<T>{
         return this.stackItems.length
     }
 }
-
-const items = new Stack();
-
-items.add(5);
-// items.remove()
-console.log(items.peek());

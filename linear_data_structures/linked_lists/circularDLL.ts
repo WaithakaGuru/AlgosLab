@@ -59,6 +59,3 @@ class CircularDoublyLinkedList<T> extends AbsDoublyLinkedList<T>{
         this.len ++
     }
 }
-
-const CDLL1 = new CircularDoublyLinkedList();
-CDLL1.traverse();

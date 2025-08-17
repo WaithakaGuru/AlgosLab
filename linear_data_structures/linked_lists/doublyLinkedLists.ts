@@ -5,7 +5,7 @@ import {AbsDoublyLinkedList, DLLNode } from "./BaseClasses";
  * @extends AbsDoublyLinkedList extends methods of the abstractDoublyLinkedList class
  * @implements only implements methods whose working is different from that of a circularDLL
  */
-class DoublyLinkedList<T> extends AbsDoublyLinkedList<T>{
+export default class DoublyLinkedList<T> extends AbsDoublyLinkedList<T>{
     constructor(){
         super();
     }
@@ -55,17 +55,3 @@ class DoublyLinkedList<T> extends AbsDoublyLinkedList<T>{
         this.len ++
     }
 }
-
-const DLL = new DoublyLinkedList<number>();
-DLL.push(6);
-DLL.push(7);
-DLL.push(8)
-// DLL.pop();
-// DLL.shift();
-// DLL.unshift(6)
-// DLL.push(8);
-// DLL.add(2, 45);
-// DLL.remove(2);
-DLL.set(0, 50);
-// DLL.reverse();
-console.log(DLL.get(0));

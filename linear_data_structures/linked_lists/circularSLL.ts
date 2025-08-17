@@ -4,7 +4,7 @@ import { AbsSinglyLinkedList, SLLNode } from "./BaseClasses";
  * @extends AbsSinglyLinkedList extends methods of the abstractDSinglyLinkedList class
  * @implements only implements methods whose working is different from that of a normal SinglyLinkedList(SLL)
  */
-class CircularSinglyLinkedList<T> extends AbsSinglyLinkedList<T>{
+export default class CircularSinglyLinkedList<T> extends AbsSinglyLinkedList<T>{
     constructor(){
         super() 
     }
@@ -35,12 +35,3 @@ class CircularSinglyLinkedList<T> extends AbsSinglyLinkedList<T>{
         }else return
     }
 }
-
-const CSLL1 = new CircularSinglyLinkedList();
-CSLL1.push(23);
-CSLL1.push(32);
-CSLL1.push(43);
-CSLL1.push(56);
-CSLL1.push(68);
-CSLL1.traverse(3)
-// console.log(CSLL1);

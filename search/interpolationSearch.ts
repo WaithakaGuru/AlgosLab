@@ -6,7 +6,7 @@
  * @param target the element to be found 
  * @returns undefined if searchArray is empty, -1 if the target is not found or the index of target in the searchArray
  */
-function interpolationSearch(searchArray: number[], target: number ): number | undefined {
+export default function interpolationSearch(searchArray: number[], target: number ): number | undefined {
     if(searchArray.length === 0) return 
     let low = 0, high: number = searchArray.length - 1, probe = null;
     const SearchedIndices = new Set<number | null> ()

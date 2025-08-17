@@ -6,7 +6,7 @@
  * @returns undefined if the list is empty. Returns an object with the index of the found target (or -1 if target not found) 
  *      and the found statement 
  */
-function binarySearch(arr: number[], target: number) {
+export default function binarySearch(arr: number[], target: number) {
     if(arr.length === 0) return 
     let left = 0, right= arr.length-1, iterations: number = 0
     while(right >= left){

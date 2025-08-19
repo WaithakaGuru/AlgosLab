@@ -1,7 +1,7 @@
 # A website to visualize the mechanisms of different sorting algorithms.
 
 ## Title 
-The page is called **Sorta**
+This site is called **Sorta**
 
  ## The Sorting Algorithms Visualized 
     - Bucket Sort

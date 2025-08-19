@@ -18,6 +18,9 @@ function App() {
   const [currentIndices, setCurrentIndices] = useState<number[]>([]);
   const [sortedIndices, setSortedIndices] = useState<number[]>([]);
   const [contestantIndices, setContestantIndices] = useState<number[]>([]);
+  const [buckets, setBuckets] = useState<number[][] | null>(null); // for bucketSort
+  const [mergeSubarrays, setMergeSubarrays] = useState<number[][] | null>(null); // for mergeSort
+  const [insertionBoundary, setInsertionBoundary] = useState<number | null>(null); // for insertionSort
   const sortGenRef = useRef<Generator<number[], void, unknown> | null>(null);
 
   // Generate random array using the new function
@@ -39,14 +42,28 @@ function App() {
     setCurrentIndices([]);
     setSortedIndices([]);
     setContestantIndices([]);
+    setBuckets(null);
+    setMergeSubarrays(null);
+    setInsertionBoundary(null);
     // Pick the right generator
     const genName = algorithm + 'Steps';
-    const sortGen = (visualSorts as any)[genName] as (arr: number[]) => Generator<number[]>;
+    const sortGen = (visualSorts as any)[genName] as (arr: number[], opts?: any) => Generator<any>;
     if (!sortGen) {
       setSorting(false);
       return;
     }
-    const gen = sortGen(array.slice());
+    // For bucketSort and mergeSort, pass a callback to get bucket/merge info
+    let extraInfo: any = {};
+    if (algorithm === 'bucketSort') {
+      extraInfo.onBuckets = (b: number[][]) => setBuckets(b.map(bucket => [...bucket]));
+    }
+    if (algorithm === 'mergeSort') {
+      extraInfo.onSubarrays = (subs: number[][]) => setMergeSubarrays(subs.map(sub => [...sub]));
+    }
+    if (algorithm === 'insertionSort') {
+      extraInfo.onBoundary = (boundary: number) => setInsertionBoundary(boundary);
+    }
+    const gen = sortGen(array.slice(), extraInfo);
     sortGenRef.current = gen;
     let step = gen.next();
     let lastArr: number[] = array.slice();
@@ -62,7 +79,7 @@ function App() {
       lastStepArr = arrStep;
       // Find which indices changed (for highlight)
       const changed: number[] = [];
-      arrStep.forEach((v, i) => {
+      arrStep.forEach((v: number, i: number) => {
         if (v !== lastArr[i]) changed.push(i);
       });
       setCurrentIndices(changed);
@@ -92,6 +109,9 @@ function App() {
     setContestantIndices([]);
     setArray(lastStepArr);
     setSorting(false);
+    setBuckets(null);
+    setMergeSubarrays(null);
+    setInsertionBoundary(null);
   };
 
   // Visualization: bar chart
@@ -99,6 +119,7 @@ function App() {
   return (
     <Box sx={{
       minHeight: '100vh',
+      minWidth: '100vw',
       bgcolor: '#f1f5f9',
       color: 'black',
       display: 'flex',
@@ -210,9 +231,34 @@ function App() {
               </Button>
             </Box>
           </Stack>
-          <Box sx={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Box sx={{ mt: 2, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Typography variant="subtitle1" sx={{ color: '#334155', mb: 2, width: '100%', textAlign: 'left' }}>Array Visualization:</Typography>
-            <Box sx={{ display: 'flex', alignItems: 'end', justifyContent: 'center', gap: 0.5, width: '100%', bgcolor: '#f1f5f9', borderRadius: 2, border: '1px solid #e2e8f0', p: 2, overflowX: 'auto' }}>
+            <Box component={"div"} sx={{ position: 'relative', display: 'flex', alignItems: 'end', justifyContent: 'center', gap: 0.5, width: '100%', bgcolor: '#334155', borderRadius: 2, border: '1px solid #e2e8f0', p: 2, overflowX: 'auto' }}>
+              {/* Bucket/merge/insertion lines */}
+              {algorithm === 'bucketSort' && buckets && buckets.length > 1 &&
+                buckets.reduce<React.ReactElement[]>((acc, _bucket, idx) => {
+                  if (idx === 0) return acc;
+                  const left = buckets.slice(0, idx).reduce((sum, b) => sum + b.length, 0);
+                  acc.push(
+                    <Box key={idx} sx={{ position: 'absolute', left: `${(left / array.length) * 100}%`, top: 0, bottom: 0, width: 3, bgcolor: "#000", zIndex: 2, borderRadius: 2 }} />
+                  );
+                  return acc;
+                }, [])
+              }
+              {algorithm === 'mergeSort' && mergeSubarrays && mergeSubarrays.length > 1 &&
+                mergeSubarrays.reduce<React.ReactElement[]>((acc, _sub, idx) => {
+                  if (idx === 0) return acc;
+                  const left = mergeSubarrays.slice(0, idx).reduce((sum, s) => sum + s.length, 0);
+                  acc.push(
+                    <Box key={idx} sx={{ position: 'absolute', left: `${(left / array.length) * 100}%`, top: 0, bottom: 0, width: 3, bgcolor: '#a21caf', zIndex: 2, borderRadius: 2 }} />
+                  );
+                  return acc;
+                }, [])
+              }
+              {algorithm === 'insertionSort' && insertionBoundary !== null && insertionBoundary > 0 && insertionBoundary < array.length && (
+                <Box sx={{ position: 'absolute', left: `${(insertionBoundary / array.length) * 100}%`, top: 0, bottom: 0, width: 3, bgcolor: '#a21caf', zIndex: 2, borderRadius: 2 }} />
+              )}
+              {/* Bars */}
               {array.map((num, idx) => {
                 let barColor = '#38bdf8'; // sky-400
                 let borderColor = '#0ea5e9'; // sky-600
@@ -242,7 +288,7 @@ function App() {
                         minWidth: 12,
                       }}
                     ></Box>
-                    <Typography variant="caption" sx={{ color: '#334155', mt: 1 }}>{num}</Typography>
+                    <Typography variant="caption" sx={{ color: '#f1f5f9', mt: 1 }}>{num}</Typography>
                   </Box>
                 );
               })}

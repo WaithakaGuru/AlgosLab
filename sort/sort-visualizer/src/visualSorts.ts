@@ -17,7 +17,10 @@ export function* bubbleSortSteps(arr: number[]): Generator<number[]> {
   yield list.slice();
 }
 
-export function* insertionSortSteps(arr: number[], opts?: any): Generator<number[]> {
+export function* insertionSortSteps(
+  arr: number[],
+  opts?: any,
+): Generator<number[]> {
   let list = arr.slice();
   for (let i = 1; i < list.length; i++) {
     let key = list[i];
@@ -49,13 +52,20 @@ export function* selectionSortSteps(arr: number[]): Generator<number[]> {
   yield list.slice();
 }
 
-export function* mergeSortSteps(arr: number[], opts?: any): Generator<number[]> {
+export function* mergeSortSteps(
+  arr: number[],
+  opts?: any,
+): Generator<number[]> {
   let list = arr.slice();
   const n = list.length;
-  let subarrays: number[][] = list.map(x => [x]);
-  if (opts && opts.onSubarrays) opts.onSubarrays(subarrays.map(sub => [...sub]));
+  let subarrays: number[][] = list.map((x) => [x]);
+  if (opts && opts.onSubarrays)
+    opts.onSubarrays(subarrays.map((sub) => [...sub]));
 
-  function* mergeSortGen(start: number, end: number): Generator<void, void, unknown> {
+  function* mergeSortGen(
+    start: number,
+    end: number,
+  ): Generator<void, void, unknown> {
     if (end - start <= 0) return;
     const mid = Math.floor((start + end) / 2);
     yield* mergeSortGen(start, mid);
@@ -63,7 +73,9 @@ export function* mergeSortSteps(arr: number[], opts?: any): Generator<number[]> 
     // Merge step
     let left = list.slice(start, mid + 1);
     let right = list.slice(mid + 1, end + 1);
-    let i = 0, j = 0, k = start;
+    let i = 0,
+      j = 0,
+      k = start;
     while (i < left.length && j < right.length) {
       if (left[i] <= right[j]) {
         list[k++] = left[i++];
@@ -82,7 +94,8 @@ export function* mergeSortSteps(arr: number[], opts?: any): Generator<number[]> 
           p++;
         }
       }
-      if (opts && opts.onSubarrays) opts.onSubarrays(subarrays.map(sub => [...sub]));
+      if (opts && opts.onSubarrays)
+        opts.onSubarrays(subarrays.map((sub) => [...sub]));
       yield;
     }
     while (i < left.length) {
@@ -98,7 +111,8 @@ export function* mergeSortSteps(arr: number[], opts?: any): Generator<number[]> 
           p++;
         }
       }
-      if (opts && opts.onSubarrays) opts.onSubarrays(subarrays.map(sub => [...sub]));
+      if (opts && opts.onSubarrays)
+        opts.onSubarrays(subarrays.map((sub) => [...sub]));
       yield;
     }
     while (j < right.length) {
@@ -114,7 +128,8 @@ export function* mergeSortSteps(arr: number[], opts?: any): Generator<number[]> 
           p++;
         }
       }
-      if (opts && opts.onSubarrays) opts.onSubarrays(subarrays.map(sub => [...sub]));
+      if (opts && opts.onSubarrays)
+        opts.onSubarrays(subarrays.map((sub) => [...sub]));
       yield;
     }
   }
@@ -132,7 +147,11 @@ export function* mergeSortSteps(arr: number[], opts?: any): Generator<number[]> 
 export function* quickSortSteps(arr: number[]): Generator<number[]> {
   let list = arr.slice();
   const stepList: number[][] = [];
-  function* quickSortGen(list: number[], start = 0, end = list.length - 1): Generator<void, void, unknown> {
+  function* quickSortGen(
+    list: number[],
+    start = 0,
+    end = list.length - 1,
+  ): Generator<void, void, unknown> {
     if (start < end) {
       let pivotIndex = getPivot(list, start, end);
       stepList.push(list.slice());
@@ -141,7 +160,8 @@ export function* quickSortSteps(arr: number[]): Generator<number[]> {
     }
   }
   function getPivot(list: number[], start: number, end: number): number {
-    let pivot = list[end], i = start - 1;
+    let pivot = list[end],
+      i = start - 1;
     for (let j = start; j < end; j++) {
       if (list[j] < pivot) {
         i++;
@@ -158,10 +178,14 @@ export function* quickSortSteps(arr: number[]): Generator<number[]> {
   yield list.slice();
 }
 
-export function* bucketSortSteps(arr: number[], opts?: any): Generator<number[]> {
+export function* bucketSortSteps(
+  arr: number[],
+  opts?: any,
+): Generator<number[]> {
   let list = arr.slice();
   if (list.length === 0) return;
-  let smallest = Math.min(...list), largest = Math.max(...list);
+  let smallest = Math.min(...list),
+    largest = Math.max(...list);
   let bucketCount = Math.floor(Math.sqrt(list.length));
   if (bucketCount < 1) bucketCount = 1;
   let range = (largest - smallest + 1) / bucketCount;
@@ -172,7 +196,7 @@ export function* bucketSortSteps(arr: number[], opts?: any): Generator<number[]>
     let idx = Math.floor((list[i] - smallest) / range);
     if (idx === bucketCount) idx--;
     buckets[idx].push(list[i]);
-    if (opts && opts.onBuckets) opts.onBuckets(buckets.map(b => [...b]));
+    if (opts && opts.onBuckets) opts.onBuckets(buckets.map((b) => [...b]));
     yield list.slice();
   }
 
@@ -191,12 +215,12 @@ export function* bucketSortSteps(arr: number[], opts?: any): Generator<number[]>
       bucket[j + 1] = key;
     }
     merged = ([] as number[]).concat(...buckets.slice(0, b + 1));
-    if (opts && opts.onBuckets) opts.onBuckets(buckets.map(b => [...b]));
+    if (opts && opts.onBuckets) opts.onBuckets(buckets.map((b) => [...b]));
     yield merged.slice();
   }
   // Final sorted array
   merged = ([] as number[]).concat(...buckets);
-  if (opts && opts.onBuckets) opts.onBuckets(buckets.map(b => [...b]));
+  if (opts && opts.onBuckets) opts.onBuckets(buckets.map((b) => [...b]));
   yield merged.slice();
 }
 
@@ -208,9 +232,15 @@ export function* heapSortSteps(arr: number[]): Generator<number[]> {
       yield* siftDown(arr, i, arr.length);
     }
   }
-  function* siftDown(heap: number[], i: number, n: number): Generator<number[]> {
-    let left = 2 * i + 1, right = 2 * i + 2, min = i;
-    if (left < n && heap[left] >heap[min]) min = left;
+  function* siftDown(
+    heap: number[],
+    i: number,
+    n: number,
+  ): Generator<number[]> {
+    let left = 2 * i + 1,
+      right = 2 * i + 2,
+      min = i;
+    if (left < n && heap[left] > heap[min]) min = left;
     if (right < n && heap[right] > heap[min]) min = right;
     if (min !== i) {
       [heap[i], heap[min]] = [heap[min], heap[i]];

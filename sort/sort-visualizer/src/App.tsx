@@ -169,7 +169,7 @@ function App() {
       </AppBar>
       <Container
         sx={{
-          m: 2,
+          my: 2,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -189,7 +189,7 @@ function App() {
             flexDirection: "column",
             justifyContent: "center",
             mx: "auto",
-            width: { xs: "90%" },
+            width: { xs: "100%", md: "90%" },
           }}
         >
           <Typography
@@ -201,7 +201,9 @@ function App() {
             Set Array size, Sorting method and delay
           </Typography>
           <Stack
+            flexWrap={"wrap"}
             direction={"row"}
+            alignItems={"end"}
             gap={1}
             border={"1px solid #e2e8f0"}
             p={".8rem"}
@@ -268,6 +270,43 @@ function App() {
                 }}
               />
             </Box>
+            <ButtonGroup>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={generateArray}
+                sx={{
+                  borderRadius: 1,
+                  height: "3rem",
+                  textWrap: "nowrap",
+                }}
+                disabled={sorting}
+              >
+                Create Array
+              </Button>
+              <Button
+                variant="contained"
+                color="success"
+                onClick={runSort}
+                sx={{
+                  borderRadius: 1,
+                  height: "3rem",
+                  textWrap: "nowrap",
+                }}
+                disabled={sorting || !array.length}
+              >
+                {sorting ? "Sorting..." : "Sort Array"}
+              </Button>
+              <Button
+                variant="contained"
+                color="warning"
+                onClick={handlePause}
+                sx={{ borderRadius: 1, height: "3rem" }}
+                disabled={!sorting}
+              >
+                {paused ? "Resume" : "Pause"}
+              </Button>
+            </ButtonGroup>
           </Stack>
           <Box
             sx={{
@@ -275,74 +314,23 @@ function App() {
               width: "100%",
               display: "flex",
               flexDirection: "column",
-              alignItems: "center",
             }}
           >
-            <Stack
-              direction="row"
-              gap="10rem"
+            <Typography
+              variant="subtitle1"
+              fontStyle={"italic"}
+              align="left"
               sx={{
-                gap: 1,
-                justifyContent: "space-between",
-                height: "4rem",
-                alignItems: "center",
+                color: "#334155",
               }}
             >
-              <Typography
-                variant="subtitle1"
-                fontStyle={"italic"}
-                sx={{
-                  color: "#334155",
-                  textAlign: "left",
-                  left: "-15rem",
-                  position: "relative",
-                }}
-              >
-                Array Visualization:
-              </Typography>
-              <ButtonGroup>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={generateArray}
-                  sx={{
-                    borderRadius: 1,
-                    height: "3rem",
-                    textWrap: "nowrap",
-                  }}
-                  disabled={sorting}
-                >
-                  Create Array
-                </Button>
-                <Button
-                  variant="contained"
-                  color="success"
-                  onClick={runSort}
-                  sx={{
-                    borderRadius: 1,
-                    height: "3rem",
-                    textWrap: "nowrap",
-                  }}
-                  disabled={sorting || !array.length}
-                >
-                  {sorting ? "Sorting..." : "Sort Array"}
-                </Button>
-                <Button
-                  variant="contained"
-                  color="warning"
-                  onClick={handlePause}
-                  sx={{ borderRadius: 1, height: "3rem" }}
-                  disabled={!sorting}
-                >
-                  {paused ? "Resume" : "Pause"}
-                </Button>
-              </ButtonGroup>
-            </Stack>
+              Array Visualization:
+            </Typography>
             <Box
               component={"div"}
               sx={{
-                position: "relative",
                 display: "flex",
+                position: "relative",
                 alignItems: "end",
                 justifyContent: "center",
                 gap: 0.5,
@@ -350,7 +338,8 @@ function App() {
                 bgcolor: "#334155",
                 borderRadius: 2,
                 border: "1px solid #e2e8f0",
-                p: 2,
+                p: "1rem",
+                pl:3,
                 overflowX: "auto",
               }}
             >
@@ -455,7 +444,8 @@ function App() {
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
-                      width: `${100 / array.length}%`,
+                      // width: `${100 / array.length}%`,
+                      width: "1rem",
                     }}
                   >
                     <Box
@@ -466,12 +456,12 @@ function App() {
                         borderRadius: "6px 6px 0 0",
                         transition: "all 0.2s",
                         height: `${(num / maxVal) * 264 + 10}px`,
-                        minWidth: 12,
+                        minWidth: 16,
                       }}
                     ></Box>
                     <Typography
                       variant="caption"
-                      sx={{ color: "#f1f5f9", mt: 1 }}
+                      sx={{ color: "#f1f5f9", mt: 1, px:1 }}
                     >
                       {num}
                     </Typography>

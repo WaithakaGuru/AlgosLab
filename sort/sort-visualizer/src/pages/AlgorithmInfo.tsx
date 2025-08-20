@@ -40,18 +40,6 @@ function getAllTopics() {
   return topics;
 }
 
-// function getMajorTopic(selected: string): string | undefined {
-//   for (const section of sidebarData as any[]) {
-//     if (section.subtopics && section.subtopics.includes(selected)) return section.label;
-//     if (section.children) {
-//       for (const child of section.children) {
-//         if (child.subtopics && child.subtopics.includes(selected)) return section.label;
-//       }
-//     }
-//   }
-//   return undefined;
-// }
-
 // Helper to get the parent subtopic label for a selected topic
 function getParentSubtopic(selected: string): string | undefined {
   for (const section of sidebarData as any[]) {

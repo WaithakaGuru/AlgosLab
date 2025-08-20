@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import React from "react";
 
 const Heaps: React.FC = () => (
@@ -41,11 +42,76 @@ const Heaps: React.FC = () => (
       <pre className="bg-[#e0e7ff] rounded-xl p-3 border-blue-600 border-2 text-xs max-w-full break-words whitespace-pre-wrap overflow-x-auto">{`
 // Example: Heap as array
 //        10
-//      /    \
+//      /    \\
 //     7      8
-//    / \    /
+//    / \\    /
 //   2   5  6
 // Array: [10, 7, 8, 2, 5, 6]
+`}</pre>
+
+<Typography variant="h6" gutterBottom mt={2} className="text-blue-600" fontWeight={"bold"}>Implementing a Heap</Typography>
+<pre className="bg-[#e0e7ff] rounded-xl p-3 border-blue-600 border-2 text-xs max-w-full break-words whitespace-pre-wrap overflow-x-auto">{`
+/* Core Heap Methods (MinHeap version, see comments for MaxHeap) */
+const Comparers = {
+  MAX: {
+    option: (i, j) => i > j,
+    optima: (k, l, heap) => (heap[k] >= heap[l]) ? k : l
+  },
+  MIN: {
+    option: (i, j) => i < j,
+    optima: (k, l, heap) => (heap[k] <= heap[l]) ? k : l
+  }
+};
+
+export default class Heap {
+  constructor(type = "MIN") { // Use "MAX" for max heap
+    this.type = type;
+    this.heap = [];
+  }
+  get len() {
+    return this.heap.length === 0 ? 0 : this.heap.length - 1;
+  }
+  heapify(arr) {
+    this.heap = [...arr];
+    for (let i = Math.floor(this.len / 2); i >= 0; i--) {
+      this.siftDown(i);
+    }
+  }
+  pluck() {
+    if (this.heap.length === 0) return;
+    [this.heap[0], this.heap[this.len]] = [this.heap[this.len], this.heap[0]];
+    const min = this.heap.pop();
+    this.siftDown(0);
+    return min;
+  }
+  siftUp(i) {
+    let parent = Math.floor((i - 1) / 2);
+    const comp = Comparers[this.type].option;
+    while (i > 0 && comp(this.heap[i], this.heap[parent])) {
+      [this.heap[i], this.heap[parent]] = [this.heap[parent], this.heap[i]];
+      i = parent;
+      parent = Math.floor((i - 1) / 2);
+    }
+  }
+  siftDown(i) {
+    const comp = Comparers[this.type === "MAX" ? "MIN" : "MAX"].option;
+    const optimalChild = Comparers[this.type].optima;
+    let left = 2 * i + 1, right = 2 * i + 2;
+    while (true) {
+      if (left > this.len) return;
+      let child = (right > this.len) ? left : optimalChild(left, right, this.heap);
+      if (comp(this.heap[i], this.heap[child])) {
+        [this.heap[i], this.heap[child]] = [this.heap[child], this.heap[i]];
+        i = child;
+        left = 2 * i + 1;
+        right = 2 * i + 2;
+      } else break;
+    }
+  }
+  // To convert to MaxHeap:
+  // - Pass "MAX" to constructor
+  // - Comparers logic automatically switches for siftUp/siftDown
+}
 `}</pre>
     </section>
   <section className="mb-8">
@@ -76,8 +142,8 @@ const Heaps: React.FC = () => (
         </svg>
       </div>
       <pre className="bg-[#e0e7ff] rounded-xl p-3 border-blue-600 border-2 text-xs max-w-full break-words whitespace-pre-wrap overflow-x-auto">{`
-// MaxHeap class (from your code)
-import { Heap } from "./BaseClasses";
+// MaxHeap class (from Heap code above)
+import { Heap } from "./Heap";
 export default class MaxHeap extends Heap {
   constructor() {
     super("MAX");
@@ -113,8 +179,8 @@ export default class MaxHeap extends Heap {
         </svg>
       </div>
       <pre className="bg-[#e0e7ff] rounded-xl p-3 border-blue-600 border-2 text-xs max-w-full break-words whitespace-pre-wrap overflow-x-auto">{`
-// MinHeap class (from your code)
-import { Heap } from "./BaseClasses";
+// MinHeap class (from Heap code above)
+import { Heap } from "./Heap";
 export default class MinHeap extends Heap {
   constructor() {
     super("MIN");
@@ -157,7 +223,7 @@ function heapSort(arr) {
 `}</pre>
     </section>
     <section>
-      <h3 className="text-xl font-semibold text-blue-700 mb-2">Key Heap Operations (from your code)</h3>
+      <h3 className="text-xl font-semibold text-blue-700 mb-2">Key Heap Operations</h3>
       <pre className="bg-[#e0e7ff] rounded-xl p-3 border-blue-600 border-2 text-xs max-w-full break-words whitespace-pre-wrap overflow-x-auto">{`
 add(val: number): void // Add value to heap
 peek(): number // Get top value (max or min)

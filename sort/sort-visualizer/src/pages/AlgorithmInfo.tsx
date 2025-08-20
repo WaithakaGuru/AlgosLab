@@ -1,20 +1,23 @@
-import DoublyLinkedList from "./topics/DoublyLinkedList";
-import SinglyLinkedList from "./topics/SinglyLinkedList";
+
 import React, { useState } from "react";
+import Sidebar, { sidebarData } from "../components/Sidebar"
+import DoublyLinkedList from "../topics/DoublyLinkedList";
+import SinglyLinkedList from "../topics/SinglyLinkedList";
+import UnionTypes from "../topics/UnionTypes";
+import ConjunctionTypes from "../topics/ConjunctionTypes";
+import Generics from "../topics/Generics";
+import BuiltInUtilityTypes from "../topics/BuiltInUtilityTypes";
+import AdvancedTypingConcepts from "../topics/AdvancedTypingConcepts";
+import MappedTypes from "../topics/MappedTypes";
+import ConditionalTypes from "../topics/ConditionalTypes";
+import Arrays from "../topics/Arrays";
+import StackTopic from "../topics/Stack";
+import QueueTopic from "../topics/Queue";
+import { Link } from "react-router-dom";
+
+
 import { Box, Typography, Drawer, Divider, useMediaQuery, Button } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-
-import Sidebar, { sidebarData } from "./Sidebar";
-import UnionTypes from "./topics/UnionTypes";
-import ConjunctionTypes from "./topics/ConjunctionTypes";
-import Generics from "./topics/Generics";
-import BuiltInUtilityTypes from "./topics/BuiltInUtilityTypes";
-import AdvancedTypingConcepts from "./topics/AdvancedTypingConcepts";
-import MappedTypes from "./topics/MappedTypes";
-import ConditionalTypes from "./topics/ConditionalTypes";
-import Arrays from "./topics/Arrays";
-import StackTopic from "./topics/Stack";
-import QueueTopic from "./topics/Queue";
 
 // Helper to flatten sidebarData for topic selection
 function getAllTopics() {
@@ -141,6 +144,14 @@ const AlgorithmInfo: React.FC = () => {
       </Drawer>
       {/* Main content area */}
       <Box sx={{ flex: 1, p: 4 }}>
+        {/* Header Bar */}
+        <div className="w-full bg-slate-800 rounded-lg mb-6 flex flex-col md:flex-row items-center justify-between px-6 py-4">
+          <div className="text-white text-2xl font-bold tracking-wide mb-2 md:mb-0">AlgoLearn <span className="font-normal text-blue-300">by AlgosLab</span></div>
+          <nav className="flex gap-4">
+            <Link to="/" className="text-white hover:text-blue-200 font-semibold transition-colors text-lg">Home</Link>
+            <Link to="/visualizer" className="text-white hover:text-blue-200 font-semibold transition-colors text-lg">Sorta</Link>
+          </nav>
+        </div>
         <Typography variant="h4" fontWeight="bold" color="#334155" gutterBottom>
           {selected}
         </Typography>

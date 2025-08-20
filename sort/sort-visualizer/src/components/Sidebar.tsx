@@ -82,7 +82,7 @@ const Sidebar: React.FC<SidebarProps> = ({ selected, setSelected, open, handleTo
           key={sub}
           selected={selected === sub}
           onClick={() => setSelected(sub)}
-          sx={{ pl: 4 }}
+          sx={{ pl: 2 }}
         >
           <ListItemText
             primary={<span>{String.fromCharCode(97 + idx) + ". "}{sub}</span>}

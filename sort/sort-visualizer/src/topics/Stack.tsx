@@ -13,30 +13,23 @@ const StackTopic: React.FC = () => (
       <b>Example (TypeScript):</b>
     </Typography>
     <Box component="pre" sx={{ bgcolor: '#e0e7ff', p: 2, borderRadius: 2, fontSize: '1rem', border: '2px solid #6366f1', whiteSpace: 'pre-wrap', wordBreak: 'break-word', mb: 2 }}>
-      {`export default class Stack<T> {
-  private stackItems: T[] = [];
-
-  add(item: T) {
-    return this.stackItems.push(item);
-  }
-
-  remove() {
-    return this.stackItems.pop();
-  }
-
-  peek(): T | undefined {
-    return this.stackItems[this.stackItems.length-1];
-  }
-
-  peekLast(): T | undefined {
-    return this.stackItems[0];
-  }
-
-  len() {
-    return this.stackItems.length;
-  }
-}`}
+      {`const stack = [];
+stack.push(10);
+stack.push(20);
+console.log(stack.pop()); // 20 (removes the top)`}
     </Box>
+    <div className="mb-4">
+      <b>Visual Representation:</b>
+      <div className="flex flex-col-reverse items-center gap-2 mt-2">
+        {["10", "20", "30"].map((val, idx) => (
+          <div key={idx} className="w-24 h-10 border-2 border-purple-400 bg-purple-100 flex items-center justify-center text-lg font-bold rounded">
+            {val}
+          </div>
+        ))}
+        <div className="text-xs text-gray-600 mt-1">Top</div>
+      </div>
+      <div className="text-xs text-gray-600 mt-2">Push adds to the top, Pop removes from the top.</div>
+    </div>
     <Typography paragraph>
       Stacks are used in function call management, undo operations, and syntax parsing.
     </Typography>

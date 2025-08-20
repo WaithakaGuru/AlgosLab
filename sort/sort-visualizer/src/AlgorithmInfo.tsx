@@ -1,3 +1,4 @@
+import DoublyLinkedList from "./topics/DoublyLinkedList";
 import SinglyLinkedList from "./topics/SinglyLinkedList";
 import React, { useState } from "react";
 import { Box, Typography, Drawer, Divider, useMediaQuery, Button } from "@mui/material";
@@ -102,6 +103,7 @@ const AlgorithmInfo: React.FC = () => {
     "Stack": <StackTopic />,
   "Queue": <QueueTopic />,
   "Singly Linked List": <SinglyLinkedList />,
+  "Doubly Linked List": <DoublyLinkedList />,
     // ...other topics...
   };
 

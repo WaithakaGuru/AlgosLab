@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import './index.css';
-import { Container, Typography, Box, Button, Select, MenuItem, Paper, AppBar, Toolbar, TextField, Stack } from '@mui/material';
+import { Container, Typography, Box, Button, Select, MenuItem, Paper, AppBar, Toolbar, TextField, Stack, ButtonGroup } from '@mui/material';
 import * as visualSorts from './visualSorts';
 
 // New random array generator
@@ -119,7 +119,6 @@ function App() {
   return (
     <Box sx={{
       minHeight: '100vh',
-      minWidth: '100vw',
       bgcolor: '#f1f5f9',
       color: 'black',
       display: 'flex',
@@ -129,7 +128,7 @@ function App() {
       p: 0,
       m: 0,
     }}>
-      <AppBar position="static" sx={{ bgcolor: '#e5e7eb', color: 'skyblue', width: '99%', boxShadow: 'none' }}>
+      <AppBar position="static" sx={{ bgcolor:'darkslategray', width: '99%', boxShadow: 'none' }}>
         <Toolbar>
           <Typography variant="h5" sx={{ flexGrow: 1, fontWeight: 'bold', color: 'skyblue' }}>
             Sorta
@@ -158,81 +157,74 @@ function App() {
             width: { xs: '90%'}
           }}
         >
-          <Typography variant='h6' fontWeight={"bold"} align='left'>Learn by observing</Typography>
-          <Stack sx={{
-            mb: 4,
-            p: 2,
-            borderRadius: 2,
-            bgcolor: '#f3f4f6',
-            border: '1px solid #e2e8f0',
-            gap: 4,
-            alignItems: 'flex-start',
-            justifyContent: 'flex-start',
-            width: '100%',
-            maxWidth: 900,
-          }}>
-           <Stack direction={"row"} gap={1}>
-              <Box>
-                <Typography sx={{ color: '#334155'}}>Array Size</Typography>
-                <TextField
-                  type="number"
-                  value={size}
-                  onChange={e => {
-                    let val = parseInt(e.target.value, 10);
-                    if (isNaN(val)) val = 10;
-                    if (val < 10) val = 10;
-                    if (val > 100) val = 100;
-                    setSize(val);
-                  }}
-                  inputProps={{ min: 10, max: 100 }}
-                  size="small"
-                  sx={{ width: 80, height: '2.5rem', bgcolor: 'white', borderRadius: 1, border: '1px solid #cbd5e1' }}
-                />
-              </Box>
-              <Box>
-                <Typography sx={{ color: '#334155'}}>Algorithm</Typography>
-                <Select value={algorithm} onChange={e => setAlgorithm(e.target.value)} sx={{ bgcolor: 'white', height:'2.5rem', minWidth: 120 }}>
-                  <MenuItem value="bucketSort">Bucket Sort</MenuItem>
-                  <MenuItem value="selectionSort">Selection Sort</MenuItem>
-                  <MenuItem value="insertionSort">Insertion Sort</MenuItem>
-                  <MenuItem value="bubbleSort">Bubble Sort</MenuItem>
-                  <MenuItem value="heapSort">Heap Sort</MenuItem>
-                  <MenuItem value="quickSort">Quick Sort</MenuItem>
-                  <MenuItem value="mergeSort">Merge Sort</MenuItem>
-                </Select>
-              </Box>
-              <Box>
-                <Typography sx={{ color: '#334155'}}>Delay (ms)</Typography>
-                <TextField
-                  type="number"
-                  value={speed}
-                  onChange={e => {
-                    let val = parseInt(e.target.value, 10);
-                    if (isNaN(val)) val = 50;
-                    if (val < 50) val = 50;
-                    if (val > 2000) val = 2000;
-                    setSpeed(val);
-                  }}
-                  inputProps={{ min: 50, max: 2000, step: 50 }}
-                  size="small"
-                  sx={{ width: 80, height: '2.5rem', bgcolor: 'white', borderRadius: 1, border: 'none' }}
-                />
-              </Box>
-           </Stack>
-            <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end', height: '4rem' }}>
-              <Button variant="contained" color="primary" onClick={generateArray} sx={{ borderRadius: 1, height: '3rem', mb: 1 }} disabled={sorting}>
-                Generate Array
-              </Button>
-              <Button variant="contained" color="secondary" onClick={runSort} sx={{ borderRadius: 1, height: '3rem', mb: 1 }} disabled={sorting || !array.length}>
-                {sorting ? 'Sorting...' : 'Run Sort'}
-              </Button>
-              <Button variant="contained" color="warning" onClick={handlePause} sx={{ borderRadius: 1, height: '3rem' }} disabled={!sorting}>
-                {paused ? 'Resume' : 'Pause'}
-              </Button>
+          <Typography variant='h6' fontWeight={"bold"} align='left' gutterBottom>Set Array size, Sorting method and delay</Typography>
+          <Stack direction={"row"} gap={1} border={"1px solid #e2e8f0"} p={".8rem"}>
+            <Box>
+              <Typography sx={{ color: '#334155'}}>Array Size</Typography>
+              <TextField
+                type="number"
+                value={size}
+                onChange={e => {
+                  let val = parseInt(e.target.value, 10);
+                  if (isNaN(val)) val = 10;
+                  if (val < 10) val = 10;
+                  if (val > 100) val = 100;
+                  setSize(val);
+                }}
+                inputProps={{ min: 10, max: 100 }}
+                size='small'
+                sx={{ width: "8rem", height:"2.5rem",  bgcolor: 'white', borderRadius: 1, border: '1px solid #cbd5e1' }}
+              />
+            </Box>
+            <Box>
+              <Typography sx={{ color: '#334155'}}>Algorithm</Typography>
+              <Select value={algorithm} onChange={e => setAlgorithm(e.target.value)} sx={{ bgcolor: 'white', height:'2.5rem', width: "9.5rem" }}>
+                <MenuItem value="bucketSort">Bucket Sort</MenuItem>
+                <MenuItem value="selectionSort">Selection Sort</MenuItem>
+                <MenuItem value="insertionSort">Insertion Sort</MenuItem>
+                <MenuItem value="bubbleSort">Bubble Sort</MenuItem>
+                <MenuItem value="heapSort">Heap Sort</MenuItem>
+                <MenuItem value="quickSort">Quick Sort</MenuItem>
+                <MenuItem value="mergeSort">Merge Sort</MenuItem>
+              </Select>
+            </Box>
+            <Box>
+              <Typography sx={{ color: '#334155'}}>Delay (ms)</Typography>
+              <TextField
+                type="number"
+                value={speed}
+                onChange={e => {
+                  let val = parseInt(e.target.value, 10);
+                  if (isNaN(val)) val = 50;
+                  if (val < 50) val = 50;
+                  if (val > 2000) val = 2000;
+                  setSpeed(val);
+                }}
+                inputProps={{ min: 50, max: 2000, step: 50 }}
+                size="small"
+                sx={{ width: "6rem", height: '2.5rem', bgcolor: 'white', borderRadius: 1, border: 'none' }}
+              />
             </Box>
           </Stack>
           <Box sx={{ mt: 2, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Typography variant="subtitle1" sx={{ color: '#334155', mb: 2, width: '100%', textAlign: 'left' }}>Array Visualization:</Typography>
+            <Stack direction="row" gap="10rem" sx={{ gap: 1, justifyContent:"space-between", height: '4rem', alignItems:"center" }}>
+              <Typography variant="subtitle1" fontStyle={"italic"}  sx={{ color: '#334155', textAlign: 'left', left: "-15rem", position:"relative"}}>
+                Array Visualization:
+              </Typography>
+              <ButtonGroup>
+                <Button variant="contained" color="primary" onClick={generateArray} sx={{
+                  borderRadius: 1, height: '3rem', textWrap: "nowrap"}} disabled={sorting}>
+                  Create Array
+                </Button>
+                <Button variant="contained" color="success" onClick={runSort} sx={{ 
+                  borderRadius: 1, height: '3rem', textWrap: "nowrap"}} disabled={sorting || !array.length}>
+                  {sorting ? 'Sorting...' : 'Sort Array'}
+                </Button>
+                <Button variant="contained" color="warning" onClick={handlePause} sx={{ borderRadius: 1, height: '3rem' }} disabled={!sorting}>
+                  {paused ? 'Resume' : 'Pause'}
+                </Button>
+              </ButtonGroup>
+            </Stack>
             <Box component={"div"} sx={{ position: 'relative', display: 'flex', alignItems: 'end', justifyContent: 'center', gap: 0.5, width: '100%', bgcolor: '#334155', borderRadius: 2, border: '1px solid #e2e8f0', p: 2, overflowX: 'auto' }}>
               {/* Bucket/merge/insertion lines */}
               {algorithm === 'bucketSort' && buckets && buckets.length > 1 &&
@@ -240,7 +232,7 @@ function App() {
                   if (idx === 0) return acc;
                   const left = buckets.slice(0, idx).reduce((sum, b) => sum + b.length, 0);
                   acc.push(
-                    <Box key={idx} sx={{ position: 'absolute', left: `${(left / array.length) * 100}%`, top: 0, bottom: 0, width: 3, bgcolor: "#000", zIndex: 2, borderRadius: 2 }} />
+                    <Box key={idx} sx={{ position: 'absolute', left: `${(left / array.length) * 100}%`, top: 0, bottom: 0, width: 3, bgcolor: "lime", zIndex: 2, borderRadius: 2 }} />
                   );
                   return acc;
                 }, [])
@@ -250,13 +242,13 @@ function App() {
                   if (idx === 0) return acc;
                   const left = mergeSubarrays.slice(0, idx).reduce((sum, s) => sum + s.length, 0);
                   acc.push(
-                    <Box key={idx} sx={{ position: 'absolute', left: `${(left / array.length) * 100}%`, top: 0, bottom: 0, width: 3, bgcolor: '#a21caf', zIndex: 2, borderRadius: 2 }} />
+                    <Box key={idx} sx={{ position: 'absolute', left: `${(left / array.length) * 100}%`, top: 0, bottom: 0, width: 3, bgcolor: 'lime', zIndex: 2, borderRadius: 2 }} />
                   );
                   return acc;
                 }, [])
               }
               {algorithm === 'insertionSort' && insertionBoundary !== null && insertionBoundary > 0 && insertionBoundary < array.length && (
-                <Box sx={{ position: 'absolute', left: `${(insertionBoundary / array.length) * 100}%`, top: 0, bottom: 0, width: 3, bgcolor: '#a21caf', zIndex: 2, borderRadius: 2 }} />
+                <Box sx={{ position: 'absolute', left: `${(insertionBoundary / array.length) * 100}%`, top: 0, bottom: 0, width: 3, bgcolor: 'lime', zIndex: 2, borderRadius: 2 }} />
               )}
               {/* Bars */}
               {array.map((num, idx) => {

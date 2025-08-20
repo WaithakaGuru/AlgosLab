@@ -210,7 +210,7 @@ export function* heapSortSteps(arr: number[]): Generator<number[]> {
   }
   function* siftDown(heap: number[], i: number, n: number): Generator<number[]> {
     let left = 2 * i + 1, right = 2 * i + 2, min = i;
-    if (left < n && heap[left] > heap[min]) min = left;
+    if (left < n && heap[left] >heap[min]) min = left;
     if (right < n && heap[right] > heap[min]) min = right;
     if (min !== i) {
       [heap[i], heap[min]] = [heap[min], heap[i]];
@@ -224,7 +224,5 @@ export function* heapSortSteps(arr: number[]): Generator<number[]> {
     yield list.slice();
     yield* siftDown(list, 0, end);
   }
-  // After extracting min repeatedly, the array is in descending order, so reverse for ascending
-  list.reverse();
   yield list.slice();
 }

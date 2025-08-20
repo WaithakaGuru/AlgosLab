@@ -1,5 +1,5 @@
 const CircularLinkedList = () => (
-  <div className="space-y-6">
+  <div className="space-y-6 max-w-full all">
     <section>
       <h2 className="text-2xl font-bold text-slate-800 mb-2">Circular Linked Lists</h2>
       <p>

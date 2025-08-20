@@ -27,9 +27,9 @@ export const sidebarData = [
           "Arrays",
           "Stack",
           "Queue",
-          "Singly Linked List",
-          "Doubly Linked List",
-          "Circular Linked List",
+          "SinglyLinkedList",
+          "DoublyLinkedList",
+          "CircularLinkedList",
         ],
       },
       {

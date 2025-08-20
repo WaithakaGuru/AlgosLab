@@ -3,13 +3,13 @@ import React from "react";
 const Graphs: React.FC = () => (
   <div className="prose max-w-none">
     <h2 className="text-2xl font-bold text-blue-800 mb-4">Graphs</h2>
-    <section>
+  <section className="mb-8">
       <h3 className="text-xl font-semibold text-blue-700 mb-2">What is a Graph?</h3>
       <p>
         A <b>graph</b> is a non-linear data structure consisting of a set of <b>vertices</b> (nodes) and a set of <b>edges</b> (connections) that link pairs of vertices. Graphs are used to model relationships and connections in various domains.
       </p>
     </section>
-    <section>
+  <section className="mb-8">
       <h3 className="text-xl font-semibold text-blue-700 mb-2">Applications of Graphs</h3>
       <ul className="list-disc ml-6 text-slate-700 mb-4">
         <li>Social networks (users as nodes, friendships as edges)</li>
@@ -19,7 +19,7 @@ const Graphs: React.FC = () => (
         <li>Dependency resolution (tasks/packages as nodes, dependencies as edges)</li>
       </ul>
     </section>
-    <section>
+  <section className="mb-8">
       <h3 className="text-xl font-semibold text-blue-700 mb-2">Components of a Graph</h3>
       <ul className="list-disc ml-6 text-slate-700 mb-4">
         <li><b>Vertex (Node):</b> Fundamental unit or point in a graph.</li>
@@ -28,7 +28,7 @@ const Graphs: React.FC = () => (
         <li><b>Degree:</b> Number of edges incident to a vertex.</li>
       </ul>
     </section>
-    <section>
+  <section className="mb-8">
       <h3 className="text-xl font-semibold text-blue-700 mb-2">Graph Representation Methods</h3>
       <ul className="list-disc ml-6 text-slate-700 mb-4">
         <li><b>Adjacency Matrix:</b> 2D array where cell (i, j) is 1 (or weight) if there is an edge from i to j.</li>
@@ -68,7 +68,7 @@ const edges = [
         </div>
       </div>
     </section>
-    <section>
+  <section className="mb-8">
       <h3 className="text-xl font-semibold text-blue-700 mb-2">Types of Graphs</h3>
       <ul className="list-disc ml-6 text-slate-700 mb-4">
         <li><b>Directed Graph (Digraph):</b> Edges have direction (A → B).</li>

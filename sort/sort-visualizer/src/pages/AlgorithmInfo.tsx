@@ -3,13 +3,6 @@ import Sidebar, { sidebarData } from "../components/Sidebar"
 import DoublyLinkedList from "../topics/DoublyLinkedList";
 import SinglyLinkedList from "../topics/SinglyLinkedList";
 import CircularLinkedList from "../topics/CircularLinkedList";
-import UnionTypes from "../topics/UnionTypes";
-import ConjunctionTypes from "../topics/ConjunctionTypes";
-import Generics from "../topics/Generics";
-import BuiltInUtilityTypes from "../topics/BuiltInUtilityTypes";
-import AdvancedTypingConcepts from "../topics/AdvancedTypingConcepts";
-import MappedTypes from "../topics/MappedTypes";
-import ConditionalTypes from "../topics/ConditionalTypes";
 import Arrays from "../topics/Arrays";
 import StackTopic from "../topics/Stack";
 import QueueTopic from "../topics/Queue";
@@ -17,11 +10,17 @@ import Trees from "../topics/Trees";
 import Graphs from '../topics/Graphs';
 import { Link } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
-
-
 import { Box, Typography, Drawer, Divider, useMediaQuery, Button, IconButton } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Footer from "../components/Footer";
+import UnionTypes from "../topics/UnionTypes";
+import ConjunctionTypes from "../topics/ConjunctionTypes";
+import Generics from "../topics/Generics";
+import BuiltInUtilityTypes from "../topics/BuiltInUtilityTypes";
+import AdvancedTypingConcepts from "../topics/AdvancedTypingConcepts";
+import MappedTypes from "../topics/MappedTypes";
+import ConditionalTypes from "../topics/ConditionalTypes";
+import Heaps from '../topics/Heaps';
 
 // Helper to flatten sidebarData for topic selection
 function getAllTopics() {
@@ -99,6 +98,13 @@ const AlgorithmInfo: React.FC = () => {
 
   // --- Content for topics ---
   const topicContent: Record<string, React.ReactNode> = {
+    "Union Types": <UnionTypes/>,
+    "Conjunction Types": <ConjunctionTypes/>,
+    Generics: <Generics/>,
+    "Built-In Utility Types": <BuiltInUtilityTypes/>,
+    "Advanced Typing Concepts": <AdvancedTypingConcepts/>,
+    "Mapped Types": <MappedTypes/>,
+    "Conditional Types": <ConditionalTypes/>,
     Arrays: <Arrays />,
     Stack: <StackTopic />,
     Queue: <QueueTopic />,
@@ -107,7 +113,7 @@ const AlgorithmInfo: React.FC = () => {
     CircularLinkedList: <CircularLinkedList />,
     Trees: <Trees />,
     Graphs: <Graphs />,
-    Heaps: <div className="text-slate-500">Coming soon...</div>,
+    Heaps: <Heaps />,
     // ...other topics...
   };
 

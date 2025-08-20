@@ -13,6 +13,8 @@ import ConditionalTypes from "../topics/ConditionalTypes";
 import Arrays from "../topics/Arrays";
 import StackTopic from "../topics/Stack";
 import QueueTopic from "../topics/Queue";
+import Trees from "../topics/Trees";
+import Graphs from '../topics/Graphs';
 import { Link } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -97,19 +99,15 @@ const AlgorithmInfo: React.FC = () => {
 
   // --- Content for topics ---
   const topicContent: Record<string, React.ReactNode> = {
-    "Union Types": <UnionTypes />,
-    "Conjunction Types": <ConjunctionTypes />,
-    "Generics": <Generics />,
-    "Built-In Utility Types": <BuiltInUtilityTypes />,
-    "Advanced Typing Concepts": <AdvancedTypingConcepts />,
-    "Mapped Types": <MappedTypes />,
-    "Conditional Types": <ConditionalTypes />,
-    "Arrays": <Arrays />,
-    "Stack": <StackTopic />,
-    "Queue": <QueueTopic />,
-    "Singly Linked List": <SinglyLinkedList />,
-    "Doubly Linked List": <DoublyLinkedList />,
-    "Circular Linked List": <CircularLinkedList />,
+    Arrays: <Arrays />,
+    Stack: <StackTopic />,
+    Queue: <QueueTopic />,
+    SinglyLinkedList: <SinglyLinkedList />,
+    DoublyLinkedList: <DoublyLinkedList />,
+    CircularLinkedList: <CircularLinkedList />,
+    Trees: <Trees />,
+    Graphs: <Graphs />,
+    Heaps: <div className="text-slate-500">Coming soon...</div>,
     // ...other topics...
   };
 

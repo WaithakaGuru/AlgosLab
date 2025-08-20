@@ -36,8 +36,8 @@ export const sidebarData = [
         label: "NonLinear Data Structures",
         subtopics: [
           "Trees",
-          "Heaps",
           "Graphs",
+          "Heaps",
         ],
       },
     ],

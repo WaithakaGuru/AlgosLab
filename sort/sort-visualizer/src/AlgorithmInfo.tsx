@@ -1,3 +1,4 @@
+import SinglyLinkedList from "./topics/SinglyLinkedList";
 import React, { useState } from "react";
 import { Box, Typography, Drawer, Divider, useMediaQuery, Button } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
@@ -99,7 +100,8 @@ const AlgorithmInfo: React.FC = () => {
     "Conditional Types": <ConditionalTypes />,
     "Arrays": <Arrays />,
     "Stack": <StackTopic />,
-    "Queue": <QueueTopic />,
+  "Queue": <QueueTopic />,
+  "Singly Linked List": <SinglyLinkedList />,
     // ...other topics...
   };
 

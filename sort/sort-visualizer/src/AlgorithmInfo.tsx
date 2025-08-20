@@ -1,93 +1,30 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Typography,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  Collapse,
-  Divider,
-  ListItemButton,
-  useMediaQuery,
-  Button,
-} from "@mui/material";
-import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import { Box, Typography, Drawer, Divider, useMediaQuery, Button } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
-// Sidebar topics and subtopics structure
-const sidebarData = [
-  {
-    label: "Advanced Typing(TS)",
-    underline: true,
-    subtopics: [
-      "Union Types",
-      "Conjunction Types",
-      "Generics",
-      "Built-In Utility Types",
-      "Advanced Typing Concepts",
-      "Mapped Types",
-      "Conditional Types",
-    ],
-  },
-  {
-    label: "Data Structures",
-    underline: true,
-    children: [
-      {
-        label: "Linear Data Structures",
-        subtopics: [
-          "Stack",
-          "Queue",
-          "Singly Linked List",
-          "Doubly Linked List",
-        ],
-      },
-      {
-        label: "NonLinear Data Structures",
-        subtopics: [
-          "Trees",
-          "Heaps",
-          "Graphs",
-        ],
-      },
-    ],
-  },
-  {
-    label: "Algorithms",
-    underline: true,
-    children: [
-      {
-        label: "Search",
-        subtopics: ["Linear Search", "Binary Search", "Interpolation Search"],
-      },
-      {
-        label: "Sort",
-        subtopics: [
-          "Bubble Sort",
-          "Selection Sort",
-          "Insertion Sort",
-          "Merge Sort",
-          "Quick Sort",
-          "Heap Sort",
-          "Bucket Sort",
-        ],
-      },
-    ],
-  },
-];
+import Sidebar, { sidebarData } from "./Sidebar";
+import UnionTypes from "./topics/UnionTypes";
+import ConjunctionTypes from "./topics/ConjunctionTypes";
+import Generics from "./topics/Generics";
+import BuiltInUtilityTypes from "./topics/BuiltInUtilityTypes";
+import AdvancedTypingConcepts from "./topics/AdvancedTypingConcepts";
+import MappedTypes from "./topics/MappedTypes";
+import ConditionalTypes from "./topics/ConditionalTypes";
+import Arrays from "./topics/Arrays";
+import StackTopic from "./topics/Stack";
+import QueueTopic from "./topics/Queue";
 
 // Helper to flatten sidebarData for topic selection
 function getAllTopics() {
   const topics: string[] = [];
-  sidebarData.forEach((section) => {
+  sidebarData.forEach((section: any) => {
     if (section.subtopics) {
-      section.subtopics.forEach((sub) => topics.push(sub));
+      section.subtopics.forEach((sub: string) => topics.push(sub));
     }
     if (section.children) {
-      section.children.forEach((child) => {
+      section.children.forEach((child: any) => {
         if (child.subtopics) {
-          child.subtopics.forEach((sub) => topics.push(sub));
+          child.subtopics.forEach((sub: string) => topics.push(sub));
         }
       });
     }
@@ -96,7 +33,7 @@ function getAllTopics() {
 }
 
 function getMajorTopic(selected: string): string | undefined {
-  for (const section of sidebarData) {
+  for (const section of sidebarData as any[]) {
     if (section.subtopics && section.subtopics.includes(selected)) return section.label;
     if (section.children) {
       for (const child of section.children) {
@@ -109,7 +46,7 @@ function getMajorTopic(selected: string): string | undefined {
 
 // Helper to get the parent subtopic label for a selected topic
 function getParentSubtopic(selected: string): string | undefined {
-  for (const section of sidebarData) {
+  for (const section of sidebarData as any[]) {
     if (section.children) {
       for (const child of section.children) {
         if (child.subtopics && child.subtopics.includes(selected)) {
@@ -117,43 +54,22 @@ function getParentSubtopic(selected: string): string | undefined {
         }
       }
     }
+        // Removed old sidebar rendering logic
   }
   return undefined;
 }
 
-// Helper to get the flat list of all subtopics in order
-function getAllSubtopics() {
-  const subtopics: string[] = [];
-  sidebarData.forEach((section) => {
-    if (section.subtopics) subtopics.push(...section.subtopics);
-    if (section.children) {
-      section.children.forEach((child) => {
-        if (child.subtopics) subtopics.push(...child.subtopics);
-      });
-    }
-  });
-  return subtopics;
-}
-
-import UnionTypes from "./topics/UnionTypes";
-import ConjunctionTypes from "./topics/ConjunctionTypes";
-import Generics from "./topics/Generics";
-import BuiltInUtilityTypes from "./topics/BuiltInUtilityTypes";
-import AdvancedTypingConcepts from "./topics/AdvancedTypingConcepts";
-import MappedTypes from "./topics/MappedTypes";
-import ConditionalTypes from "./topics/ConditionalTypes";
 
 const AlgorithmInfo: React.FC = () => {
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.only("xs"));
-  const isSm = useMediaQuery(theme.breakpoints.only("sm"));
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
 
   // State for open/close dropdowns and selected topic
   const [open, setOpen] = useState<{ [key: string]: boolean }>({});
   const [selected, setSelected] = useState<string>(getAllTopics()[0]);
   const parentSubtopic = getParentSubtopic(selected);
-  const allSubtopics = getAllSubtopics();
+  const allSubtopics = getAllTopics();
   const currentIdx = allSubtopics.indexOf(selected);
 
   // Toggle dropdowns
@@ -168,108 +84,6 @@ const AlgorithmInfo: React.FC = () => {
     if (currentIdx < allSubtopics.length - 1) setSelected(allSubtopics[currentIdx + 1]);
   };
 
-  // Render subtopics as clickable list with a., b., ...
-  const renderSubtopics = (subtopics: string[]) => (
-    <List component="div" disablePadding>
-      {subtopics.map((sub, idx) => (
-        <ListItemButton
-          key={sub}
-          selected={selected === sub}
-          onClick={() => setSelected(sub)}
-          sx={{ pl: 4 }}
-        >
-          <ListItemText
-            primary={<span>{String.fromCharCode(97 + idx) + ". "}{sub}</span>}
-          />
-        </ListItemButton>
-      ))}
-    </List>
-  );
-
-  // Render sidebar recursively
-  const renderSidebar = () => (
-    <List>
-      {sidebarData.map((section) => {
-        const isMajorSelected = getMajorTopic(selected) === section.label;
-        return (
-          <React.Fragment key={section.label}>
-            <ListItem disablePadding>
-              <ListItemButton
-                onClick={() =>
-                  section.subtopics || section.children
-                    ? handleToggle(section.label)
-                    : undefined
-                }
-                sx={{
-                  fontWeight: section.underline ? "bold" : undefined,
-                  bgcolor: isMajorSelected ? "#cbd5e1" : undefined,
-                  borderRadius: 1,
-                }}
-              >
-                <ListItemText
-                  primary={
-                    <span
-                      style={{
-                        textDecoration: section.underline ? "underline" : undefined,
-                        fontWeight: section.underline || section.label === "Advanced Typing(TS)" ? "bold" : undefined,
-                        textUnderlineOffset: section.underline || section.label === "Advanced Typing(TS)" ? 4 : undefined,
-                        color: section.label === "Advanced Typing(TS)" ? "#1e293b" : undefined,
-                      }}
-                    >
-                      {section.label}
-                    </span>
-                  }
-                />
-                {(section.subtopics || section.children) ? (
-                  open[section.label] ? <ExpandLess /> : <ExpandMore />
-                ) : null}
-              </ListItemButton>
-            </ListItem>
-            {/* Subtopics for top-level section */}
-            {section.subtopics && (
-              <Collapse in={!!open[section.label]} timeout="auto" unmountOnExit>
-                {renderSubtopics(section.subtopics)}
-              </Collapse>
-            )}
-            {/* Children (e.g. Linear/NonLinear Data Structures, Search/Sort) */}
-            {section.children && (
-              <Collapse in={!!open[section.label]} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                  {section.children.map((child) => {
-                    const isParentSelected = parentSubtopic === child.label;
-                    return (
-                      <React.Fragment key={child.label}>
-                        <ListItemButton
-                          onClick={() => handleToggle(child.label)}
-                          sx={{
-                            pl: 3,
-                            border: isParentSelected ? "2px dashed #1e293b" : undefined,
-                            borderRadius: isParentSelected ? 1 : undefined,
-                            my: isParentSelected ? ".5rem" : undefined,
-                          }}
-                        >
-                          <ListItemText primary={child.label} />
-                          {child.subtopics ? (
-                            open[child.label] ? <ExpandLess /> : <ExpandMore />
-                          ) : null}
-                        </ListItemButton>
-                        {child.subtopics && (
-                          <Collapse in={!!open[child.label]} timeout="auto" unmountOnExit>
-                            {renderSubtopics(child.subtopics)}
-                          </Collapse>
-                        )}
-                      </React.Fragment>
-                    );
-                  })}
-                </List>
-              </Collapse>
-            )}
-          </React.Fragment>
-        );
-      })}
-    </List>
-  );
-
   // Drawer width logic
   const drawerWidth = isMdUp ? 300 : 200;
   const drawerDisplay = isXs ? "none" : "block";
@@ -283,6 +97,9 @@ const AlgorithmInfo: React.FC = () => {
     "Advanced Typing Concepts": <AdvancedTypingConcepts />,
     "Mapped Types": <MappedTypes />,
     "Conditional Types": <ConditionalTypes />,
+    "Arrays": <Arrays />,
+    "Stack": <StackTopic />,
+    "Queue": <QueueTopic />,
     // ...other topics...
   };
 
@@ -308,7 +125,13 @@ const AlgorithmInfo: React.FC = () => {
             Topics
           </Typography>
           <Divider sx={{ mb: 2 }} />
-          {renderSidebar()}
+          <Sidebar
+            selected={selected}
+            setSelected={setSelected}
+            open={open}
+            handleToggle={handleToggle}
+            parentSubtopic={parentSubtopic}
+          />
         </Box>
       </Drawer>
       {/* Main content area */}

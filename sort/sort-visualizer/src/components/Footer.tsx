@@ -3,7 +3,7 @@ import React from "react";
 const currentYear = () => new Date().getFullYear();
 
 const Footer: React.FC = () => (
-  <footer className="bg-slate-800 text-white mt-12 pt-8 pb-2 px-4">
+  <footer className="bg-slate-800 text-white pt-8 pb-2 px-4 w-full">
     <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-8">
       <div className="mb-6 md:mb-0">
         <h2 className="text-2xl font-bold mb-2">AlgosLab</h2>

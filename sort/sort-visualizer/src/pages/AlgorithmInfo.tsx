@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Sidebar, { sidebarData } from "../components/Sidebar"
 import DoublyLinkedList from "../topics/DoublyLinkedList";
 import SinglyLinkedList from "../topics/SinglyLinkedList";
+import CircularLinkedList from "../topics/CircularLinkedList";
 import UnionTypes from "../topics/UnionTypes";
 import ConjunctionTypes from "../topics/ConjunctionTypes";
 import Generics from "../topics/Generics";
@@ -103,9 +104,10 @@ const AlgorithmInfo: React.FC = () => {
     "Conditional Types": <ConditionalTypes />,
     "Arrays": <Arrays />,
     "Stack": <StackTopic />,
-  "Queue": <QueueTopic />,
-  "Singly Linked List": <SinglyLinkedList />,
-  "Doubly Linked List": <DoublyLinkedList />,
+    "Queue": <QueueTopic />,
+    "Singly Linked List": <SinglyLinkedList />,
+    "Doubly Linked List": <DoublyLinkedList />,
+    "Circular Linked List": <CircularLinkedList />,
     // ...other topics...
   };
 
@@ -145,16 +147,16 @@ const AlgorithmInfo: React.FC = () => {
       {/* Main content area */}
       <Box sx={{ flex: 1, p: 4 }}>
         {/* Header Bar */}
-        <div className="w-full bg-slate-800 rounded-lg mb-6 flex flex-col md:flex-row items-center justify-between px-6 py-4">
+        <div className="w-full bg-slate-800 rounded-lg top-[-1.5rem] relative flex flex-col md:flex-row items-center justify-between px-6 py-4">
           <div className="text-white text-2xl font-bold tracking-wide mb-2 md:mb-0">AlgoLearn <span className="font-normal text-blue-300">by AlgosLab</span></div>
           <nav className="flex gap-4">
             <Link to="/" className="text-white hover:text-blue-200 font-semibold transition-colors text-lg">Home</Link>
             <Link to="/visualizer" className="text-white hover:text-blue-200 font-semibold transition-colors text-lg">Sorta</Link>
           </nav>
         </div>
-        <Typography variant="h4" fontWeight="bold" color="#334155" gutterBottom>
+        {/* <Typography variant="h4" fontWeight="bold" color="#334155" gutterBottom>
           {selected}
-        </Typography>
+        </Typography> */}
         {topicContent[selected] || (
           <Typography color="text.secondary">Select a topic to view details.</Typography>
         )}

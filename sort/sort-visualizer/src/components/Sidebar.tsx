@@ -29,6 +29,7 @@ export const sidebarData = [
           "Queue",
           "Singly Linked List",
           "Doubly Linked List",
+          "Circular Linked List",
         ],
       },
       {
@@ -148,7 +149,8 @@ const Sidebar: React.FC<SidebarProps> = ({ selected, setSelected, open, handleTo
                         <ListItemButton
                           onClick={() => handleToggle(child.label)}
                           sx={{
-                            pl: 3,
+                            pl: 1,
+                            ml: isParentSelected? 1 : undefined,
                             border: isParentSelected ? "2px dashed #1e293b" : undefined,
                             borderRadius: isParentSelected ? 1 : undefined,
                             my: isParentSelected ? ".5rem" : undefined,

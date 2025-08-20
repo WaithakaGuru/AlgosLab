@@ -1,7 +1,7 @@
-import React from "react";
 import { Typography, Box } from "@mui/material";
+import { Fragment } from "react/jsx-runtime";
 
-const SinglyLinkedList: React.FC = () => (
+const SinglyLinkedList= () => (
   <>
     <Typography variant="h5" color="#0f172a" fontWeight="bold" gutterBottom>
       Singly Linked List
@@ -54,9 +54,9 @@ const SinglyLinkedList: React.FC = () => (
     <Typography component="p" gutterBottom>
       <b>Visual Representation:</b>
     </Typography>
-    <div className="flex flex-row items-center gap-4 mb-4">
+    <div className="flex flex-row items-center gap-1 md:gap-4 mb-4">
       {[1, 2, 3, 4].map((val, idx, arr) => (
-        <React.Fragment key={val}>
+        < Fragment key={val}>
           <div className="flex flex-col items-center">
             <div className="w-16 h-12 border-2 border-cyan-400 bg-cyan-100 flex items-center justify-center text-lg font-bold rounded">
               {val}
@@ -66,7 +66,7 @@ const SinglyLinkedList: React.FC = () => (
           {idx < arr.length - 1 && (
             <span className="text-2xl text-cyan-600">→</span>
           )}
-        </React.Fragment>
+        </ Fragment>
       ))}
       <span className="text-xs text-gray-500 ml-2">null</span>
     </div>

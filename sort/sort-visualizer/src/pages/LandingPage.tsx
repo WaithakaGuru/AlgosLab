@@ -8,11 +8,11 @@ const LandingPage: React.FC = () => {
       <div className="max-w-2xl w-full text-center px-4">
         <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">Welcome to AlgosLab</h1>
         <h2 className="text-2xl md:text-3xl text-slate-500 mb-4 font-semibold">Learn and Visualize Data Structures & Algorithms</h2>
-        <p className="text-lg text-slate-700 mb-6">
-          <span className="font-semibold text-slate-800">AlgosLab</span> is your interactive home for all things Data Structures and Algorithms (DSA). Dive into in-depth explanations, code, and visualizations for sorting, searching, and more.<br/>
+        <p className="text-slate-700 mb-6">
+          <span className="font-bold text-slate-800">AlgosLab</span> is your interactive home for all things Data Structures and Algorithms (DSA). Dive into in-depth explanations, code, and visualizations for sorting, searching, and more.<br/>
           <span className="block mt-4 text-slate-600">The <span className="font-bold text-blue-600">Sorta</span> section is a dedicated, hands-on playground for sorting algorithms—just one of many DSA areas you can explore here.</span>
         </p>
-        <div className="flex flex-row gap-4 justify-center my-8">
+        <div className="flex flex-row gap-6 justify-center items-center my-8">
           <Link to="/info">
             <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-lg shadow">
               Learn DSA

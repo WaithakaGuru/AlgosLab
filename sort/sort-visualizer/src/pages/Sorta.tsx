@@ -1,7 +1,7 @@
 
 import { useState, useRef } from "react";
 import "../index.css";
-import * as visualSorts from "../visualSorts";
+import * as visualSorts from "../utils/visualSorts";
 import { Link } from "react-router-dom";
 
 function getRandomArray(size: number, min = 1, max = 99): number[] {

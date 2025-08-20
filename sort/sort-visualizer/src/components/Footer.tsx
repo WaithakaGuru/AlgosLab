@@ -4,7 +4,7 @@ const currentYear = () => new Date().getFullYear();
 
 const Footer: React.FC = () => (
   <footer className="bg-slate-800 text-white pt-8 pb-2 px-4 w-full">
-    <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-8">
+    <div className="max-w-6xl mx-auto flex flex-wrap justify-around gap-8">
       <div className="mb-6 md:mb-0">
         <h2 className="text-2xl font-bold mb-2">AlgosLab</h2>
         <p className="text-slate-300 max-w-xs">
@@ -29,8 +29,10 @@ const Footer: React.FC = () => (
       </div>
     </div>
     <div className="border-t border-slate-700 mt-8 pt-4 text-center text-slate-400 text-sm">
-      &copy; {currentYear()} AlgosLab. All rights reserved. <br />
-      Made with <span className="text-red-400">♥</span> by <a href="https://github.com/WaithakaGuru" target="_blank" rel="noopener noreferrer" className="font-bold text-white hover:underline">Waithaka</a>
+      &copy; {currentYear()} AlgosLab. All rights reserved. 
+        <p className="inline ml-8">
+            Made with <span className="text-red-400">♥</span> by <a href="https://github.com/WaithakaGuru" target="_blank" rel="noopener noreferrer" className="font-bold text-white hover:underline">Waithaka</a>
+        </p>    
     </div>
   </footer>
 );

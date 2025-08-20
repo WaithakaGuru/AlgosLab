@@ -1,10 +1,9 @@
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Sorta from "./pages/Sorta";
 import AlgorithmInfo from "./pages/AlgorithmInfo";
 
-const Router: React.FC = () => (
+const Router = () => (
   <BrowserRouter>
     <Routes>
     <Route path="/" element={<LandingPage />} />

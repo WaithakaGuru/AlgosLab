@@ -65,11 +65,10 @@ console.log(deque.shift()); // remove from front (5)`}
       </div>
       <div className="text-xs text-gray-600 mt-2">DeQueue allows adding/removing from both ends.</div>
     </div>
-    <Typography paragraph>
+    <Typography component={"p"} gutterBottom>
       Queues are used in scheduling, buffering, and breadth-first search algorithms. DeQueues are useful for problems requiring flexible insertion/removal, like sliding window algorithms.
     </Typography>
-    <Typography paragraph>
-      Queues are used in scheduling, buffering, and breadth-first search algorithms.
+    <Typography component={"p"} gutterBottom>      Queues are used in scheduling, buffering, and breadth-first search algorithms.
     </Typography>
   </>
 );

@@ -1,7 +1,7 @@
-import React from "react";
 import { Typography, Box } from "@mui/material";
+import { Fragment } from "react/jsx-runtime";
 
-const DoublyLinkedList: React.FC = () => (
+const DoublyLinkedList = () => (
   <>
     <Typography variant="h5" color="#0f172a" fontWeight="bold" gutterBottom>
       Doubly Linked List
@@ -63,9 +63,9 @@ const DoublyLinkedList: React.FC = () => (
     <Typography component="p" gutterBottom>
       <b>Visual Representation:</b>
     </Typography>
-    <div className="flex flex-row items-center gap-4 mb-4">
+    <div className="flex flex-row items-center gap-[.1rem] md:gap-4 mb-4">
       {[1, 2, 3, 4].map((val, idx, arr) => (
-        <React.Fragment key={val}>
+        <Fragment key={val}>
           <div className="flex flex-col items-center">
             <div className="w-16 h-12 border-2 border-pink-400 bg-pink-100 flex items-center justify-center text-lg font-bold rounded">
               {val}
@@ -77,7 +77,7 @@ const DoublyLinkedList: React.FC = () => (
               <span className="text-2xl text-pink-600">⇄</span>
             </>
           )}
-        </React.Fragment>
+        </Fragment>
       ))}
       <span className="text-xs text-gray-500 ml-2">null</span>
     </div>

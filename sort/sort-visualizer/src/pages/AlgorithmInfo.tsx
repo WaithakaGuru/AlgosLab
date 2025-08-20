@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Sidebar, { sidebarData } from "../components/Sidebar"
 import DoublyLinkedList from "../topics/DoublyLinkedList";
@@ -15,10 +14,12 @@ import Arrays from "../topics/Arrays";
 import StackTopic from "../topics/Stack";
 import QueueTopic from "../topics/Queue";
 import { Link } from "react-router-dom";
+import MenuIcon from '@mui/icons-material/Menu';
 
 
-import { Box, Typography, Drawer, Divider, useMediaQuery, Button } from "@mui/material";
+import { Box, Typography, Drawer, Divider, useMediaQuery, Button, IconButton } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import Footer from "../components/Footer";
 
 // Helper to flatten sidebarData for topic selection
 function getAllTopics() {
@@ -38,17 +39,17 @@ function getAllTopics() {
   return topics;
 }
 
-function getMajorTopic(selected: string): string | undefined {
-  for (const section of sidebarData as any[]) {
-    if (section.subtopics && section.subtopics.includes(selected)) return section.label;
-    if (section.children) {
-      for (const child of section.children) {
-        if (child.subtopics && child.subtopics.includes(selected)) return section.label;
-      }
-    }
-  }
-  return undefined;
-}
+// function getMajorTopic(selected: string): string | undefined {
+//   for (const section of sidebarData as any[]) {
+//     if (section.subtopics && section.subtopics.includes(selected)) return section.label;
+//     if (section.children) {
+//       for (const child of section.children) {
+//         if (child.subtopics && child.subtopics.includes(selected)) return section.label;
+//       }
+//     }
+//   }
+//   return undefined;
+// }
 
 // Helper to get the parent subtopic label for a selected topic
 function getParentSubtopic(selected: string): string | undefined {
@@ -73,6 +74,7 @@ const AlgorithmInfo: React.FC = () => {
   // State for open/close dropdowns and selected topic
   const [open, setOpen] = useState<{ [key: string]: boolean }>({});
   const [selected, setSelected] = useState<string>(getAllTopics()[0]);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const parentSubtopic = getParentSubtopic(selected);
   const allSubtopics = getAllTopics();
   const currentIdx = allSubtopics.indexOf(selected);
@@ -113,11 +115,21 @@ const AlgorithmInfo: React.FC = () => {
 
   return (
     <Box sx={{ display: "flex", minHeight: "100vh", bgcolor: "#f1f5f9" }}>
+      <IconButton
+        sx={{position: "fixed", bgcolor: "#1d293d", height:"2rem", maxWidth: "2rem", }}
+        className="sm:hidden top-2 left-0 z-50 rounded-md shadow-lg bg-slate-800"
+        onClick={() => setSidebarOpen((v) => !v)}
+        aria-label="Open sidebar menu"
+      >
+        <MenuIcon style={{ color: 'white', fontSize: 32 }} />
+      </IconButton>
       {/* Sidebar */}
       <Drawer
-        variant="permanent"
+        variant={isMdUp ? "permanent" : "temporary"}
+        open={isMdUp ? true : sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
         sx={{
-          display: drawerDisplay,
+          display: isMdUp ? drawerDisplay : (sidebarOpen ? 'block' : 'none'),
           width: drawerWidth,
           flexShrink: 0,
           [`& .MuiDrawer-paper`]: {
@@ -127,6 +139,7 @@ const AlgorithmInfo: React.FC = () => {
             borderRight: "1px solid #cbd5e1",
           },
         }}
+        ModalProps={{ keepMounted: true }}
       >
         <Box>
           <Typography variant="h5" fontWeight="bold" color="#334155" gutterBottom
@@ -145,29 +158,30 @@ const AlgorithmInfo: React.FC = () => {
         </Box>
       </Drawer>
       {/* Main content area */}
-      <Box sx={{ flex: 1, p: 4 }}>
+      <Box sx={{ flex: 1, py: 4}} className="xs: p-6 md:p-8">
         {/* Header Bar */}
-        <div className="w-full bg-slate-800 rounded-lg top-[-1.5rem] relative flex flex-col md:flex-row items-center justify-between px-6 py-4">
-          <div className="text-white text-2xl font-bold tracking-wide mb-2 md:mb-0">AlgoLearn <span className="font-normal text-blue-300">by AlgosLab</span></div>
+        <div className="w-full bg-slate-800 rounded-lg top-[-1.5rem] relative flex  items-center justify-between px-6 py-4">
+          <div className="text-white text-xl md:text-2xl font-bold tracking-wide mb-2 md:mb-0">AlgoLearn <span className="font-normal text-blue-300">by AlgosLab</span></div>
           <nav className="flex gap-4">
             <Link to="/" className="text-white hover:text-blue-200 font-semibold transition-colors text-lg">Home</Link>
             <Link to="/visualizer" className="text-white hover:text-blue-200 font-semibold transition-colors text-lg">Sorta</Link>
           </nav>
         </div>
-        {/* <Typography variant="h4" fontWeight="bold" color="#334155" gutterBottom>
-          {selected}
-        </Typography> */}
         {topicContent[selected] || (
-          <Typography color="text.secondary">Select a topic to view details.</Typography>
+            <>
+                <Typography variant="h6" gutterBottom fontWeight={"bold"} fontSize={"1.5rem"}>{selected}</Typography>
+                <Typography color="text.secondary">No details added for  topic yet!!</Typography>
+            </>
         )}
-        <Box sx={{ display: 'flex', gap: 2, mt: 4 }}>
+        <Box sx={{ display: 'flex', gap: 2, my: 4 }}>
           <Button variant="outlined" onClick={handlePrev} disabled={currentIdx <= 0}>
             Previous
           </Button>
           <Button variant="contained" onClick={handleNext} disabled={currentIdx === allSubtopics.length - 1}>
             Next
-          </Button>
+        </Button>
         </Box>
+        <Footer/>
       </Box>
     </Box>
   );

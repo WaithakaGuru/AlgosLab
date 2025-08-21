@@ -1,5 +1,7 @@
 # Algos Project — DSA Playground
 
+![AlgosLab](./sort_visualizer/image.png)
+
 A comprehensive **Data Structures & Algorithms (DSA)** project that combines **interactive visualizations** with a **learning platform**.  
 This repo is designed for learners, students, and enthusiasts who want to **see algorithms in action** and **understand the theory** behind them.
 

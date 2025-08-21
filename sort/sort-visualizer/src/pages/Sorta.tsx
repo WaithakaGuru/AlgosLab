@@ -4,10 +4,10 @@ import "../index.css";
 import * as visualSorts from "../utils/visualSorts";
 import { Link } from "react-router-dom";
 
-function getRandomArray(size: number, min = 1, max = 99): number[] {
+function getRandomArray(size: number): number[] {
   return Array.from(
     { length: size },
-    () => Math.floor(Math.random() * (max - min + 1)) + min,
+    () => Math.floor(Math.random() * 100),
   );
 }
 
@@ -212,7 +212,7 @@ export default function Sorta() {
           </div>
           <div className="mt-4 w-full flex flex-col">
             <div className="italic text-slate-800 text-left mb-2">Array Visualization:</div>
-            <div className="flex relative items-end justify-center gap-1 w-full bg-slate-800 rounded-xl border border-slate-200 p-4 pl-12 overflow-x-auto">
+            <div className="flex relative items-end justify-start gap-1 bg-slate-800 rounded-xl border border-slate-200 p-4 overflow-x-auto min-w-0" style={{maxWidth: '100%', width: 'fit-content'}}>
               {/* Bucket/merge/insertion lines */}
               {algorithm === "bucketSort" &&
                 buckets &&

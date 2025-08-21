@@ -74,7 +74,7 @@ const DSIntroduction = () => (
         </div>
     </div>
     <h3 className="text-xl font-semibold mt-6 mb-2">Visual Representations</h3>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="grid grid-cols-2 md:grid-cols-2 gap-6">
       <div>
         <span className="font-bold">Array</span>
         <pre className="bg-slate-900 rounded p-2 text-sm text-white overflow-x-auto border-gray-600 border-4">[ 1 | 2 | 3 | 4 | 5 ]</pre>

@@ -1,3 +1,5 @@
+import { Stack, Typography } from "@mui/material";
+
 const Prerequisites = () => (
     <section className="max-w-8xl mx-auto">
         <h2 className="text-2xl font-bold mb-2">Prerequisites for Advanced TypeScript Typings</h2>
@@ -55,17 +57,33 @@ const Prerequisites = () => (
                 </div>
             </li>
         </ul>
-          <div className="fcol">
-            <span className="font-bold">Array Typing</span>
-            <pre className="code-snippet">{`const numbers: number[] = [1, 2, 3, 4];
-const users: Person[] = [user];`}</pre>
-          </div>
-          <div className="fcol">
-            <span className="font-bold">Function Typing</span>
-            <pre className="code-snippet">{`function add(a: number, b: number): number {
-    return a + b;
-}`}</pre>
-        </div>
+
+        <Typography variant="h6"fontWeight={"bold"}>Basic Typings in Typescript</Typography>        
+        <Stack component={"section"} className="pl-6">
+            <div className="fcol">
+                <span className="font-bold">Array Typing</span>
+                <pre className="code-snippet">{`const numbers: number[] = [1, 2, 3, 4];
+    const users: Person[] = [user];`}</pre>
+            </div>
+            <div className="fcol">
+                <span className="font-bold">Function Typing</span>
+                <pre className="code-snippet">{`function add(a: number, b: number): number {
+        return a + b;
+}
+ const calculateMiles: (kilometers: number) => number = (): number {
+    return kilometers * 1.61
+ }
+`}</pre>
+            </div>
+            <div className="fcol">
+                <span className="font-bold">Object Typing</span>
+                <pre className="code-snippet">{`const obj1: {[key: string]: string} = {name: "Waithaka"}
+
+        // or use the Record in-built Utility type(covered in later topics)
+const obj2: Record<string, string> = {sport: "Football}
+`}</pre>
+            </div>
+        </Stack>
         <h3 className="text-xl font-semibold mt-6 mb-2">Previsit: Union & Intersection Types</h3>
         <ul className="list-disc ml-6">
           <li><b>Union Types:</b> Allow a variable to be one of several types. <code>type ID = number | string;</code></li>

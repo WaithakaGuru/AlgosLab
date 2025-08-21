@@ -157,7 +157,7 @@ const AlgorithmInfo = () => {
             <Link to="/sorta" className="text-white hover:text-blue-200 font-semibold transition-colors text-lg">Sorta</Link>
           </nav>
         </div>
-        <Box component={"main"} className="xs:px-6 md:px-8">
+        <Box component={"main"} className="px-6 md:px-8">
           {topicContent[selected] || (
               <>
                   <Typography variant="h6" gutterBottom fontWeight={"bold"} fontSize={"1.5rem"}>{selected}</Typography>

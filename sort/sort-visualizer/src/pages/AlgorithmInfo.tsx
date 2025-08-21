@@ -21,6 +21,8 @@ import AdvancedTypingConcepts from "../topics/AdvancedTypingConcepts";
 import MappedTypes from "../topics/MappedTypes";
 import ConditionalTypes from "../topics/ConditionalTypes";
 import Heaps from '../topics/Heaps';
+import DSIntroduction from '../topics/DSIntroduction';
+import Prerequisites from '../topics/Prerequisites';
 
 function getAllTopics() {
   const topics: string[] = [];
@@ -82,6 +84,7 @@ const AlgorithmInfo = () => {
   const drawerDisplay = isXs ? "none" : "block";
   
   const topicContent: Record<string, React.ReactNode> = {
+    Prerequisites: <Prerequisites />,
     "Union Types": <UnionTypes/>,
     "Conjunction Types": <ConjunctionTypes/>,
     Generics: <Generics/>,
@@ -89,6 +92,7 @@ const AlgorithmInfo = () => {
     "Advanced Typing Concepts": <AdvancedTypingConcepts/>,
     "Mapped Types": <MappedTypes/>,
     "Conditional Types": <ConditionalTypes/>,
+    Introduction: <DSIntroduction />,
     Arrays: <Arrays />,
     Stack: <StackTopic />,
     Queue: <QueueTopic />,

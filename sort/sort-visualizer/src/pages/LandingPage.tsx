@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
-import { Stack, Typography } from "@mui/material";
+import { Stack} from "@mui/material";
 
 const LandingPage= () => {
   return (

@@ -18,3 +18,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.fcol{
+  @apply flex flex-col gap-2 mt-4
+}
+.lispace>li{
+  @apply my-6
+}
+
+.code-snippet{
+  @apply rounded p-2 text-xs bg-slate-900 border-l-4 border-blue-400 text-blue-100 font-mono
+}

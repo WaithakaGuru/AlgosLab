@@ -8,6 +8,7 @@ export const sidebarData = [
     label: "Advanced Typing(TS)",
     underline: true,
     subtopics: [
+      "Prerequisites",
       "Union Types",
       "Conjunction Types",
       "Generics",
@@ -20,6 +21,7 @@ export const sidebarData = [
   {
     label: "Data Structures",
     underline: true,
+    subtopics: ["Introduction"],
     children: [
       {
         label: "Linear Data Structures",

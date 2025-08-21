@@ -5,9 +5,13 @@ import { Stack, Typography } from "@mui/material";
 const LandingPage= () => {
   return (
     <Stack>
+      {/* Navigation Bar */}
       <div className="w-full bg-slate-800 py-4 px-6 flex items-center justify-between shadow">
           <div className="flex items-center gap-2">
-            <Typography variant="h6" className="text-white text-2xl font-bold ml-2">AlgosLab</Typography>
+            <div className="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 bg-clip-text text-transparent drop-shadow-lg select-none">
+              <span className="font-black">Algos</span>
+              <span className="font-black text-pink-400">Lab</span>
+            </div>
             <span className="text-blue-300 text-[1rem] italic tracking-wide">your goto DSA Hub</span>
           </div>
           <nav className="flex gap-4">
@@ -17,11 +21,17 @@ const LandingPage= () => {
       </div>
   
       <div className="w-full flex flex-col items-center justify-center pt-24 pb-6 bg-gradient-to-br from-blue-100 via-sky-200 to-indigo-200 relative overflow-hidden">
-        {/* Decorative gradient shapes */}
         <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-blue-400 via-sky-300 to-indigo-300 rounded-full opacity-30 blur-2xl -z-10 animate-pulse" style={{filter:'blur(80px)'}}></div>
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tr from-indigo-400 via-blue-300 to-sky-200 rounded-full opacity-20 blur-2xl -z-10 animate-pulse" style={{filter:'blur(80px)'}}></div>
         <div className="max-w-4xl w-full text-center px-4">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-sky-600 to-indigo-700 mb-4 drop-shadow-lg">Welcome to AlgosLab</h1>
+          <div className="text-5xl md:text-6xl font-extrabold text-transparent
+          bg-clip-text bg-gradient-to-r from-blue-700 via-sky-600 to-indigo-700 mb-4 drop-shadow-lg">Welcome to 
+            <div className="tracking-tight bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500
+             bg-clip-text text-transparent drop-shadow-lg select-none inline ml-4">
+              <span className="font-black">Algos</span>
+              <span className="font-black text-pink-400">Lab</span>
+            </div>
+          </div>
           <h2 className="text-2xl md:text-3xl text-slate-700 mb-4 font-semibold tracking-wide">Learn and Visualize Data Structures & Algorithms</h2>
           <p className="text-slate-800 mb-6 text-lg font-medium">
             <span className="font-bold text-blue-800">AlgosLab</span> is your interactive home for all things Data Structures and Algorithms (DSA). Dive into in-depth explanations, code, and visualizations for sorting, searching, and more.<br/>

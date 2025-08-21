@@ -29,3 +29,15 @@
 .code-snippet{
   @apply rounded p-2 text-xs bg-slate-900 border-l-4 border-blue-400 text-blue-100 font-mono
 }
+
+.testimonial-card-wrap{
+  @apply bg-white rounded-xl shadow p-6 flex flex-col items-center border border-slate-200  max-w-[26rem]
+}
+
+.testimonial-icon{
+  @apply w-16 h-16 rounded-full  flex items-center justify-center mb-3
+}
+
+.package-wrapper{
+  @apply bg-white rounded-xl shadow p-6 flex flex-col items-center border border-slate-200 max-w-[26rem]
+}

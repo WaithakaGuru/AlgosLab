@@ -126,13 +126,20 @@ export default function Sorta() {
               <div className="text-slate-800 mb-1">Array Size</div>
               <input
                 type="number"
-                value={size}
+                value={size === 0 ? '' : size}
                 onChange={(e) => {
+                  // Allow empty string for editing
+                  if (e.target.value === "") {
+                    setSize(0);
+                  } else {
+                    let val = parseInt(e.target.value, 10);
+                    if (!isNaN(val)) setSize(val);
+                  }
+                }}
+                onBlur={(e) => {
                   let val = parseInt(e.target.value, 10);
-                  if (isNaN(val)) val = 10;
-                  if (val < 10) val = 10;
-                  if (val > 100) val = 100;
-                  setSize(val);
+                  if (isNaN(val) || val < 10) setSize(10);
+                  else if (val > 100) setSize(100);
                 }}
                 min={10}
                 max={100}
@@ -159,13 +166,19 @@ export default function Sorta() {
               <div className="text-slate-800 mb-1">Delay (ms)</div>
               <input
                 type="number"
-                value={speed}
+                value={speed === 0 ? '' : speed}
                 onChange={(e) => {
+                  if (e.target.value === "") {
+                    setSpeed(0);
+                  } else {
+                    let val = parseInt(e.target.value, 10);
+                    if (!isNaN(val)) setSpeed(val);
+                  }
+                }}
+                onBlur={(e) => {
                   let val = parseInt(e.target.value, 10);
-                  if (isNaN(val)) val = 50;
-                  if (val < 50) val = 50;
-                  if (val > 2000) val = 2000;
-                  setSpeed(val);
+                  if (isNaN(val) || val < 50) setSpeed(50);
+                  else if (val > 2000) setSpeed(2000);
                 }}
                 min={50}
                 max={2000}

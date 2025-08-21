@@ -57,12 +57,12 @@ const LandingPage= () => {
       <Stack component={"main"} className="bg-gray-100">
 
         {/* Packages Section */}
-        <div className="w-full max-w-6xl mx-auto mt-12 mb-8">
+        <div className="w-full max-w-8xl mx-auto mt-12 mb-8">
           <h2 className="text-2xl font-bold text-slate-800 mb-6 text-center">Packages</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
   
             {/* AlgoLearn Package */}
-            <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center border border-slate-200">
+            <div className="package-wrapper">
               <div className="flex flex-col items-center mb-3">
                 <svg width="60" height="60" viewBox="0 0 60 60">
                   <circle cx="30" cy="30" r="28" fill="#2563eb" stroke="#1e40af" strokeWidth="3" />
@@ -80,7 +80,7 @@ const LandingPage= () => {
             </div>
   
             {/* Sorta Package */}
-            <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center border border-slate-200">
+            <div className="package-wrapper">
               <div className="flex flex-col items-center mb-3">
                 <svg width="60" height="60" viewBox="0 0 60 60">
                   <rect x="8" y="8" width="44" height="44" rx="10" fill="#0ea5e9" stroke="#0369a1" strokeWidth="3" />
@@ -98,7 +98,7 @@ const LandingPage= () => {
             </div>
   
             {/* Finder Package (Coming Soon) */}
-            <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center border border-slate-200 opacity-60">
+            <div className="package-wrapper opacity-60">
               <div className="flex flex-col items-center mb-3">
                 <svg width="60" height="60" viewBox="0 0 60 60">
                   <ellipse cx="30" cy="30" rx="26" ry="20" fill="#f59e42" stroke="#ea580c" strokeWidth="3" />
@@ -119,19 +119,19 @@ const LandingPage= () => {
         </div>
   
         {/* Testimonials Section */}
-        <div className="w-full max-w-6xl mx-auto mt-4 mb-12">
+        <div className="w-full max-w-8xl mx-auto mt-4 mb-12">
           <h2 className="text-2xl font-bold text-slate-800 mb-6 text-center">Testimonials</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex gap-8 flex-wrap justify-center">
           
-            <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center border border-slate-200">
-              <div className="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center mb-3">
+            <div className="testimonial-card-wrap">
+              <div className="bg-indigo-100 testimonial-icon">
                 <span className="text-3xl font-bold text-indigo-700">W</span>
               </div>
               <p className="text-slate-700 text-center mb-2 italic">“I built AlgosLab as a give back to the community and to support fellow devs. Let's keep learning and growing together!”</p>
               <span className="text-slate-500 text-sm mt-2">— WaithakaGuru, Creator</span>
             </div>
   
-            <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center border border-slate-200">
+            <div className="testimonial-card-wrap">
               <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-3">
                 <span className="text-3xl font-bold text-blue-700">J</span>
               </div>
@@ -139,7 +139,7 @@ const LandingPage= () => {
               <span className="text-slate-500 text-sm mt-2">— Jane M., CS Student</span>
             </div>
   
-            <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center border border-slate-200">
+            <div className="testimonial-card-wrap">
               <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center mb-3">
                 <span className="text-3xl font-bold text-orange-700">O</span>
               </div>
@@ -147,7 +147,7 @@ const LandingPage= () => {
               <span className="text-slate-500 text-sm mt-2">— Prof. K. Otieno, Lecturer</span>
             </div>
         
-            <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center border border-slate-200">
+            <div className="testimonial-card-wrap">
               <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-3">
                 <span className="text-3xl font-bold text-green-700">D</span>
               </div>

@@ -52,6 +52,7 @@ const Heaps: React.FC = () => (
 <Typography variant="h6" gutterBottom mt={2} className="text-blue-600" fontWeight={"bold"}>Implementing a Heap</Typography>
 <pre className="bg-[#e0e7ff] rounded-xl p-3 border-blue-600 border-2 text-xs max-w-full break-words whitespace-pre-wrap overflow-x-auto">{`
 /* Core Heap Methods (MinHeap version, see comments for MaxHeap) */
+
 const Comparers = {
   MAX: {
     option: (i, j) => i > j,
@@ -64,19 +65,23 @@ const Comparers = {
 };
 
 export default class Heap {
+
   constructor(type = "MIN") { // Use "MAX" for max heap
     this.type = type;
     this.heap = [];
   }
-  get len() {
+
+  len() {
     return this.heap.length === 0 ? 0 : this.heap.length - 1;
   }
+
   heapify(arr) {
     this.heap = [...arr];
     for (let i = Math.floor(this.len / 2); i >= 0; i--) {
       this.siftDown(i);
     }
   }
+
   pluck() {
     if (this.heap.length === 0) return;
     [this.heap[0], this.heap[this.len]] = [this.heap[this.len], this.heap[0]];
@@ -84,6 +89,7 @@ export default class Heap {
     this.siftDown(0);
     return min;
   }
+
   siftUp(i) {
     let parent = Math.floor((i - 1) / 2);
     const comp = Comparers[this.type].option;
@@ -93,6 +99,7 @@ export default class Heap {
       parent = Math.floor((i - 1) / 2);
     }
   }
+
   siftDown(i) {
     const comp = Comparers[this.type === "MAX" ? "MIN" : "MAX"].option;
     const optimalChild = Comparers[this.type].optima;
@@ -108,6 +115,7 @@ export default class Heap {
       } else break;
     }
   }
+
   // To convert to MaxHeap:
   // - Pass "MAX" to constructor
   // - Comparers logic automatically switches for siftUp/siftDown

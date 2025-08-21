@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Sidebar, { sidebarData } from "../components/Sidebar"
 import DoublyLinkedList from "../topics/DoublyLinkedList";
 import SinglyLinkedList from "../topics/SinglyLinkedList";
@@ -22,7 +22,6 @@ import MappedTypes from "../topics/MappedTypes";
 import ConditionalTypes from "../topics/ConditionalTypes";
 import Heaps from '../topics/Heaps';
 
-// Helper to flatten sidebarData for topic selection
 function getAllTopics() {
   const topics: string[] = [];
   sidebarData.forEach((section: any) => {
@@ -54,13 +53,11 @@ function getParentSubtopic(selected: string): string | undefined {
   return undefined;
 }
 
-
-const AlgorithmInfo: React.FC = () => {
+const AlgorithmInfo = () => {
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.only("xs"));
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
-
-  // State for open/close dropdowns and selected topic
+ 
   const [open, setOpen] = useState<{ [key: string]: boolean }>({});
   const [selected, setSelected] = useState<string>(getAllTopics()[0]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -83,8 +80,7 @@ const AlgorithmInfo: React.FC = () => {
   // Drawer width logic
   const drawerWidth = isMdUp ? 260 : 200;
   const drawerDisplay = isXs ? "none" : "block";
-
-  // --- Content for topics ---
+  
   const topicContent: Record<string, React.ReactNode> = {
     "Union Types": <UnionTypes/>,
     "Conjunction Types": <ConjunctionTypes/>,
@@ -115,7 +111,7 @@ const AlgorithmInfo: React.FC = () => {
       >
         <MenuIcon style={{ color: 'white', fontSize: 32 }} />
       </IconButton>
-      {/* Sidebar */}
+     
       <Drawer
         variant={isMdUp ? "permanent" : "temporary"}
         open={isMdUp ? true : sidebarOpen}
@@ -149,29 +145,29 @@ const AlgorithmInfo: React.FC = () => {
           />
         </Box>
       </Drawer>
-      {/* Main content area */}
-      <Box sx={{ flex: 1, py: 4}} className="xs: p-6 md:p-8">
-        {/* Header Bar */}
-        <div className="w-full bg-slate-800 rounded-lg top-[-1.5rem] relative flex  items-center justify-between px-6 py-4">
-          <div className="text-white text-xl md:text-2xl font-bold tracking-wide mb-2 md:mb-0">AlgoLearn <span className="font-normal text-blue-300">by AlgosLab</span></div>
+      <Box sx={{ flex: 1}} className="pt-6">
+        <div className="w-full bg-slate-800 rounded- top-[-1.5rem] relative flex  items-center justify-between px-6 py-4">
+          <div className="text-white text-xl font-bold tracking-wide mb-2 md:mb-0">AlgoLearn <span className="font-normal text-blue-300">by AlgosLab</span></div>
           <nav className="flex gap-4">
             <Link to="/" className="text-white hover:text-blue-200 font-semibold transition-colors text-lg">Home</Link>
-            <Link to="/visualizer" className="text-white hover:text-blue-200 font-semibold transition-colors text-lg">Sorta</Link>
+            <Link to="/sorta" className="text-white hover:text-blue-200 font-semibold transition-colors text-lg">Sorta</Link>
           </nav>
         </div>
-        {topicContent[selected] || (
-            <>
-                <Typography variant="h6" gutterBottom fontWeight={"bold"} fontSize={"1.5rem"}>{selected}</Typography>
-                <Typography color="text.secondary">No details added for  topic yet!!</Typography>
-            </>
-        )}
-        <Box sx={{ display: 'flex', gap: 2, my: 4 }}>
+        <Box component={"main"} className="xs:px-6 md:px-8">
+          {topicContent[selected] || (
+              <>
+                  <Typography variant="h6" gutterBottom fontWeight={"bold"} fontSize={"1.5rem"}>{selected}</Typography>
+                  <Typography color="text.secondary">No details added for  topic yet!!</Typography>
+              </>
+          )}
+        </Box>
+        <Box sx={{ display: 'flex', gap: 2, m: 4 }}>
           <Button variant="outlined" onClick={handlePrev} disabled={currentIdx <= 0}>
             Previous
           </Button>
           <Button variant="contained" onClick={handleNext} disabled={currentIdx === allSubtopics.length - 1}>
             Next
-        </Button>
+          </Button>
         </Box>
         <Footer/>
       </Box>

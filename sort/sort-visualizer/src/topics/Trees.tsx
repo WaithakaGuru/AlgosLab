@@ -115,6 +115,12 @@ function postorder(node) {
           </g>
         </svg>
       </div>
+      <section>
+        <h3 className="text-xl font-semibold text-blue-700 mb-2">Next: Binary Search Trees (BSTs)</h3>
+        <p>
+          A <b>Binary Search Tree</b> is a special type of binary tree where each node's left child is less than the node and the right child is greater. BSTs allow fast lookup, insertion, and deletion.
+        </p>
+      </section>
     </section>
     <section>
       <h3 className="text-xl font-semibold text-blue-700 mb-2">Constructing a BST from an Array</h3>
@@ -179,12 +185,6 @@ for (const v of arr) {
         <li>Network routing protocols</li>
         <li>AI decision trees and game trees</li>
       </ul>
-    </section>
-    <section>
-      <h3 className="text-xl font-semibold text-blue-700 mb-2">Next: Binary Search Trees (BSTs)</h3>
-      <p>
-        A <b>Binary Search Tree</b> is a special type of binary tree where each node's left child is less than the node and the right child is greater. BSTs allow fast lookup, insertion, and deletion.
-      </p>
     </section>
   </div>
 );

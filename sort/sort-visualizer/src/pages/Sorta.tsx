@@ -108,11 +108,10 @@ export default function Sorta() {
   const maxVal = Math.max(...array, 1);
   return (
     <div className="min-h-screen bg-slate-100 text-black flex flex-col items-center justify-center p-0 m-0">
-      {/* Top Bar with Navigation */}
-      <div className="w-full bg-blue-600 py-4 px-6 flex items-center justify-between shadow">
+      <div className="w-full bg-slate-800 py-4 px-6 flex items-center justify-between shadow">
         <div className="flex items-center gap-2">
           <span className="text-white text-2xl font-bold tracking-wide">Sorta</span>
-          <span className="text-blue-200 text-lg font-normal ml-2">by AlgosLab</span>
+          <span className="text-blue-300 text-lg font-normal ml-2">by AlgosLab</span>
         </div>
         <nav className="flex gap-4">
           <Link to="/" className="text-white hover:text-blue-200 font-semibold transition-colors text-lg">Home</Link>

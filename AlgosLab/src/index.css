@@ -1,8 +1,4 @@
 @import "tailwindcss";
-/* Custom styles for Sorta theme */
-/* body {
-  @apply bg-slate-700 text-slate-800;
-} */
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -27,7 +23,7 @@
 }
 
 .code-snippet{
-  @apply rounded p-2 text-xs bg-slate-900 border-l-4 border-blue-400 text-blue-100 font-mono
+  @apply rounded p-2 text-xs bg-slate-900 border-l-4 border-blue-400 text-blue-100 font-mono wrap-break-word whitespace-pre-wrap
 }
 
 .testimonial-card-wrap{
@@ -40,4 +36,8 @@
 
 .package-wrapper{
   @apply bg-white rounded-xl shadow p-6 flex flex-col items-center border border-slate-200 max-w-[26rem]
+}
+
+.txt{
+  @apply ml-2 text-sm text-slate-600
 }

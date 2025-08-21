@@ -1,7 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 
 const Prerequisites = () => (
-    <section className="max-w-8xl mx-auto">
+    <section className="max-w-8xl mx-auto overflow-x-auto">
         <h2 className="text-2xl font-bold mb-2">Prerequisites for Advanced TypeScript Typings</h2>
         <p>
           Before diving into advanced TypeScript typings, you should be comfortable with the basics of TypeScript and its differences from JavaScript. Here’s what you should know:
@@ -9,22 +9,22 @@ const Prerequisites = () => (
         <ul className="list-decimal ml-6 lispace">
             <li>
               <b>What TypeScript is and why it’s needed:</b>
-              <div className="ml-2 text-sm text-slate-600">TypeScript is a superset of JavaScript that adds static typing. It helps catch errors early, improves code quality, and enables better tooling and refactoring. For example, <code>let age: number = 25;</code> ensures <code>age</code> is always a number.</div>
+              <div className="txt">TypeScript is a superset of JavaScript that adds static typing. It helps catch errors early, improves code quality, and enables better tooling and refactoring. For example, <code>let age: number = 25;</code> ensures <code>age</code> is always a number.</div>
             </li>
             <li>
               <b>How TypeScript code is executed and how to set up a basic <code>tsconfig.json</code>:</b>
-              <div className="ml-2 text-sm text-slate-600">TypeScript code is compiled to JavaScript using the TypeScript compiler (<code>tsc</code>). A <code>tsconfig.json</code> file configures the compiler. Example:
-                {/* <pre className="rounded p-2 text-xs bg-slate-100 border-l-4 border-blue-400 text-slate-800 font-mono">{`{ */}
-                </div>
+              <div className="txt">
+                TypeScript code is compiled to JavaScript using the TypeScript compiler (<code>tsc</code>). A <code>tsconfig.json</code> file configures the compiler.
+              </div>
             </li>
               
             <li>
               <b>What a type is and how to do basic typing:</b>
-              <div className="ml-2 text-sm text-slate-600">A type defines the shape or kind of data a variable can hold. Example: <code>let name: string = "Alice";</code> or <code>let isActive: boolean = true;</code></div>
+              <div className="txt">A type defines the shape or kind of data a variable can hold. Example: <code>let name: string = "Alice";</code> or <code>let isActive: boolean = true;</code></div>
             </li>
             <li>
               <b>Primitive data types:</b>
-              <div className="ml-2 text-sm text-slate-600">Common primitives include:
+              <div className="txt">Common primitives include:
                 <ul className="list-disc ml-6">
                   <li><code>number</code>: <span className="text-xs">e.g. <code>let n: number = 42;</code></span></li>
                   <li><code>string</code>: <span className="text-xs">e.g. <code>let s: string = "hello";</code></span></li>
@@ -36,18 +36,18 @@ const Prerequisites = () => (
             </li>
             <li>
               <b>How to define custom types using <code>type</code> and <code>interface</code>:</b>
-              <div className="ml-2 text-sm text-slate-600">Use <code>type</code> for type aliases and <code>interface</code> for object shapes. Example:
+              <div className="txt">Use <code>type</code> for type aliases and <code>interface</code> for object shapes. Example:
                 <pre className="code-snippet">{`type Point = { x: number; y: number; `}
                 </pre>
               </div>
             </li>
             <li>
               <b>Type inference:</b>
-              <div className="ml-2 text-sm text-slate-600">TypeScript can automatically infer types from values. Example: <code>let city = "Nairobi";</code> is inferred as <code>string</code> without explicit annotation.</div>
+              <div className="txt">TypeScript can automatically infer types from values. Example: <code>let city = "Nairobi";</code> is inferred as <code>string</code> without explicit annotation.</div>
             </li>
             <li>
               <b>How to write and run statically typed TypeScript code:</b>
-              <div className="ml-2 text-sm text-slate-600">Write code in <code>.ts</code> files, use types everywhere, and run <code>tsc</code> to compile. Example:
+              <div className="txt">Write code in <code>.ts</code> files, use types everywhere, and run <code>tsc</code> to compile. Example:
                 <pre className="code-snippet">
             {`type Person = {
         name: string;

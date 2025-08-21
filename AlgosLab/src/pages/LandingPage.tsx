@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
-import { Stack} from "@mui/material";
+import { Box, Stack} from "@mui/material";
 
 const LandingPage= () => {
   return (
@@ -62,7 +62,7 @@ const LandingPage= () => {
           <div className="flex flex-wrap justify-center gap-8">
   
             {/* AlgoLearn Package */}
-            <div className="package-wrapper">
+            <Box className="package-wrapper" sx={{maxWidth: {sm: "35rem", md: "25rem"}}}>
               <div className="flex flex-col items-center mb-3">
                 <svg width="60" height="60" viewBox="0 0 60 60">
                   <circle cx="30" cy="30" r="28" fill="#2563eb" stroke="#1e40af" strokeWidth="3" />
@@ -77,10 +77,10 @@ const LandingPage= () => {
                 <pre className="bg-slate-200 rounded p-2 text-xs overflow-x-auto">{`// Learn about Trees interactively
         <AlgoLearn topic="Trees" />`}</pre>
               </div>
-            </div>
+            </Box>
   
             {/* Sorta Package */}
-            <div className="package-wrapper">
+            <Box className="package-wrapper" sx={{maxWidth: {sm: "35rem", md: "25rem"}}}>
               <div className="flex flex-col items-center mb-3">
                 <svg width="60" height="60" viewBox="0 0 60 60">
                   <rect x="8" y="8" width="44" height="44" rx="10" fill="#0ea5e9" stroke="#0369a1" strokeWidth="3" />
@@ -95,10 +95,10 @@ const LandingPage= () => {
                 <pre className="bg-slate-200 rounded p-2 text-xs overflow-x-auto">{`// Visualize Quick Sort
         <Sorta algorithm="quickSort" array={[5, 2, 9, 1]} />`}</pre>
               </div>
-            </div>
+            </Box>
   
             {/* Finder Package (Coming Soon) */}
-            <div className="package-wrapper opacity-60">
+            <Box className="package-wrapper opacity-60" sx={{maxWidth: {sm: "35rem", md: "25rem"}}}>
               <div className="flex flex-col items-center mb-3">
                 <svg width="60" height="60" viewBox="0 0 60 60">
                   <ellipse cx="30" cy="30" rx="26" ry="20" fill="#f59e42" stroke="#ea580c" strokeWidth="3" />
@@ -114,7 +114,7 @@ const LandingPage= () => {
                 <pre className="bg-slate-200 rounded p-2 text-xs overflow-x-auto">{`// Coming soon: Visualize Binary Search
         <Finder algorithm="binarySearch" array={[1,2,3,4,5]} target={3} />`}</pre>
               </div>
-            </div>
+            </Box>
           </div>
         </div>
   
@@ -123,37 +123,37 @@ const LandingPage= () => {
           <h2 className="text-2xl font-bold text-slate-800 mb-6 text-center">Testimonials</h2>
           <div className="flex gap-8 flex-wrap justify-center">
           
-            <div className="testimonial-card-wrap">
+            <Box className="testimonial-card-wrap" sx={{maxWidth: {sm: "35rem", md: "25rem"}}}>
               <div className="bg-indigo-100 testimonial-icon">
                 <span className="text-3xl font-bold text-indigo-700">W</span>
               </div>
               <p className="text-slate-700 text-center mb-2 italic">“I built AlgosLab as a give back to the community and to support fellow devs. Let's keep learning and growing together!”</p>
               <span className="text-slate-500 text-sm mt-2">— WaithakaGuru, Creator</span>
-            </div>
+            </Box>
   
-            <div className="testimonial-card-wrap">
+            <Box className="testimonial-card-wrap" sx={{maxWidth: {sm: "35rem", md: "25rem"}}}>
               <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-3">
                 <span className="text-3xl font-bold text-blue-700">J</span>
               </div>
               <p className="text-slate-700 text-center mb-2 italic">“AlgoLearn made DSA finally click for me. The visuals and step-by-step code are a game changer!”</p>
               <span className="text-slate-500 text-sm mt-2">— Jane M., CS Student</span>
-            </div>
+            </Box>
   
-            <div className="testimonial-card-wrap">
+            <Box className="testimonial-card-wrap" sx={{maxWidth: {sm: "35rem", md: "25rem"}}}>
               <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center mb-3">
                 <span className="text-3xl font-bold text-orange-700">O</span>
               </div>
               <p className="text-slate-700 text-center mb-2 italic">“Sorta is the best way to see how sorting really works. I use it to teach my students every semester.”</p>
               <span className="text-slate-500 text-sm mt-2">— Prof. K. Otieno, Lecturer</span>
-            </div>
+            </Box>
         
-            <div className="testimonial-card-wrap">
+            <Box className="testimonial-card-wrap" sx={{maxWidth: {sm: "35rem", md: "25rem"}}}>
               <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-3">
                 <span className="text-3xl font-bold text-green-700">D</span>
               </div>
               <p className="text-slate-700 text-center mb-2 italic">“I aced my coding interview thanks to AlgosLab. The interactive practice was exactly what I needed.”</p>
               <span className="text-slate-500 text-sm mt-2">— David W., Software Engineer</span>
-            </div>
+            </Box>
           </div>
         </div>
   

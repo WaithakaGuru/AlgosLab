@@ -28,23 +28,23 @@ This repo is designed for learners, students, and enthusiasts who want to **see 
 
 ## Project Structure
 
-├── advanced_concepts # Advanced DSA topics (e.g., DP, greedy, backtracking)
-├── AlgosLab # React + Vite application
-│ └── src
-│ ├── components # Reusable UI components
-│ ├── pages # Application pages (Sorta, AlgoLearn)
-│ ├── topics # DSA topics content
-│ └── utils # Utility functions/helpers
-├── linear_data_structures
-│ └── linked_lists # Implementations of linked lists
-├── nonLinear_data_structures
-│ ├── graphs # Graph data structures & algorithms
-│ ├── heaps # Heap implementations
-│ └── trees
-│ └── tree_traversal # Tree traversals (DFS, BFS, etc.)
-├── search # Searching algorithms
-├── sort # Sorting algorithms
-└── sort_visualizer # Sorting visualization tool
+├── advanced_concepts # Advanced DSA topics (e.g., DP, greedy, backtracking) <br>
+├── AlgosLab # React + Vite application <br>
+│ └── src <br>
+│ ├── components # Reusable UI components <br>
+│ ├── pages # Application pages (Sorta, AlgoLearn) <br>
+│ ├── topics # DSA topics content <br>
+│ └── utils # Utility functions/helpers <br>
+├── linear_data_structures <br>
+│ └── linked_lists # Implementations of linked lists <br>
+├── nonLinear_data_structures <br>
+│ ├── graphs # Graph data structures & algorithms <br>
+│ ├── heaps # Heap implementations <br>
+│ └── trees <br>
+│ └── tree_traversal # Tree traversals (DFS, BFS, etc.) <br>
+├── search # Searching algorithms <br>
+├── sort # Sorting algorithms <br>
+└── sort_visualizer # Sorting visualization tool <br>
 
 
 ---
